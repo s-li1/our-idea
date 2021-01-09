@@ -1,4 +1,4 @@
-import SwipeAction from "./SwipeAction";
+import {LEFT, RIGHT} from "../constants/swipeActions";
 import * as firebase from "firebase/app";
 
 class AppClient {
@@ -40,8 +40,8 @@ class AppClient {
      */
     async swipeProject(projectID, direction) {
         switch (direction) {
-            case SwipeAction.LEFT:
-            case SwipeAction.RIGHT:
+            case LEFT:
+            case RIGHT:
             default:
         }
     }
