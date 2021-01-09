@@ -1,10 +1,21 @@
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import * as ROUTES from './constants/routes'
 
+import LandingPage from './pages/Landing/LandingPage';
+import CreateAccountPage from './pages/CreateAccount/CreateAccountPage';
+import LoginPage from './pages/Login/LoginPage';
+import HomePage from './pages/Home/HomePage';
 function App() {
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path={ROUTES.LANDING} component={LandingPage}/>
+        <Route path={ROUTES.CREATE_ACCOUNT} component={CreateAccountPage}/>
+        <Route path={ROUTES.LOGIN} component={LoginPage}/>
+        <Route path={ROUTES.HOME} component={HomePage}/>
+      </Switch>
+    </Router>
   );
 }
 
