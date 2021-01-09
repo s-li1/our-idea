@@ -1,6 +1,16 @@
 import SwipeAction from "./SwipeAction";
+import * as firebase from "firebase/app";
 
 class AppClient {
+    /**
+     * @type {}
+     */
+    db;
+
+    AppClient() {
+        this.db = firebase.default.firestore();
+    }
+
     /**
      * Given project data, creates a project in the DB and returns the project ID.
      * @param {*} projectData 
