@@ -3,7 +3,7 @@ import CreateForm from './CreateForm'
 import { FirebaseContext } from '../../components/Firebase';
 import './CreateAccount.css'
 import { BsFillPersonFill } from 'react-icons/bs';
-import GoBack from '../../components/GoBack/GoBack';
+import GoBack from '../../components/Buttons/GoBack/GoBack';
 import * as ROUTES from '../../constants/routes';
 import './CreateAccount.css';
 export default function CreateAccountPage() {

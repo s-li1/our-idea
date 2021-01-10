@@ -1,0 +1,6 @@
+.messages {
+    height: 76vh;
+    width: 400px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

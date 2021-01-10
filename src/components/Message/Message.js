@@ -1,27 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import './Message.css';
+import { FirebaseContext } from '../../components/Firebase';
+import {ChatAppClient} from '../../clients/ChatAppClient/ChatAppClient';
+import { SessionContext } from '../../components/Session';
 
-function Message ({ message: { text, user }, name }) {
-  let isSentByCurrentUser = name === user ? true : false;
-  //let isSentByCurrentUser = false;
+function Message(props) {
+  const { message: { text, senderID } } = props;
+  const { session: { userID } } = useContext(SessionContext);
+
   return (
-    isSentByCurrentUser
-      ? (
-        <div className="messageContainer justifyEnd">
-          <div className="messageBox backgroundSent">
-            <p className="messageText">{text}</p>
-          </div>
-          <p className="sentText pr-10">{name}</p>
+    <div>
+      {senderID === userID ? 
+      <div className="messageContainer justfyEnd">
+        <div className="messageBox backgroundPurple">
+          <p className="messageText white">{text}</p>
         </div>
-        )
-        : (
-          <div className="messageContainer justifyStart">
-            <div className="messageBox backgroundReceived">
-              <p className="messageText">{text}</p>
-            </div>
-            <p className="sentText pl-10">{user.name}</p>
-          </div>
-        )
+      </div> : 
+      <div className= "messageContainer justifyStart">
+        <div className="messageBox backgroundLight">
+          <p className="messageText dark">{text}</p>
+        </div>
+      </div>}
+    </div>
   );
 }
 

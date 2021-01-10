@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import * as ROUTES from '../../constants/routes';
 import { MdAddCircle } from 'react-icons/md'
 import { MdHome } from 'react-icons/md'
-import { MdChatBubble } from 'react-icons/md'
 import { MdViewModule } from 'react-icons/md'
 import { withStyles, IconButton} from '@material-ui/core';
 import SignOut from '../SignOut/SignOut';
@@ -45,7 +44,7 @@ const styles = theme => ({
             duration: 2
         }
     }
-  });
+});
 
 
 export default withStyles(styles)(Navbar);
