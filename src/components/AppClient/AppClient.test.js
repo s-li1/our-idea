@@ -1,3 +1,4 @@
+import { LEFT, RIGHT } from '../../constants/swipeActions';
 import AppClient from './AppClient';
 
 require('dotenv').config();
@@ -50,10 +51,10 @@ describe('it should run', () => {
             maxMembers: 4
         };
         const pid = await client.createProject(project);
-        const projectIds = await (await client.getMyProjects()).map(p => p.projectID);
+        const projectIds = (await client.getMyProjects()).map(p => p.projectID);
 
         await client.removeUserFromProject(pid);
-        const postProjectIds = await (await client.getMyProjects()).map(p => p.projectID);
+        const postProjectIds = (await client.getMyProjects()).map(p => p.projectID);
 
         expect(projectIds).toContain(pid);
         expect(postProjectIds).not.toContain(pid);
@@ -61,6 +62,15 @@ describe('it should run', () => {
 
     it('can swipe a project right', async () => {
         const pid = "test2";
+        const timestamp = '2';
 
-    })
+        await client.swipeProject(pid, RIGHT);
+
+        const projectIds = (await client.getMyProjects()).map(p => p.projectID); 
+        const user = await client.getUser(client.auth.currentUser.uid);
+
+        await client.removeUserFromProject(pid);
+        expect(projectIds).toContain(pid);
+        expect(user.lastProjectTimestamp).toEqual(timestamp);
+    });
 })

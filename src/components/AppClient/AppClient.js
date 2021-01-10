@@ -19,20 +19,20 @@ class AppClient extends Firebase {
      * @returns {Promise<string>} 
      */
     async createProject(project) {
-        const uuid = uuidv1();
+        const projectID = uuidv1();
         await firebase
             .firestore()
             .collection(PROJECTS)
-            .doc(uuid)
+            .doc(projectID)
             .set({
                 ...project, 
-                projectID: uuidv1(),
+                projectID,
                 timestamp: this.createUIDTimestamp(),
                 createdBy: this.auth.currentUser.uid
             });
 
         /** @type {Match} */
-        const match = { userID: this.auth.currentUser.uid, projectID: uuid };
+        const match = { userID: this.auth.currentUser.uid, projectID };
 
         // Add the person direct to this project as a match
         await firebase
@@ -40,7 +40,7 @@ class AppClient extends Firebase {
             .collection(MATCHES)
             .add(match);
 
-        return uuid;
+        return projectID;
     }
 
     /**
