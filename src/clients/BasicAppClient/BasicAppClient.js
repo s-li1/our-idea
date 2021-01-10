@@ -193,6 +193,7 @@ class BasicAppClient extends AuthClient {
             .get();
 
         docs.forEach(d => d.ref.delete());
+        console.log("done")
     }
 }
 
