@@ -28,7 +28,7 @@ export default function Navbar () {
                 </IconButton>
             </Link>
             
-            <Link to={ROUTES.HOME}> 
+            <Link to={ROUTES.PROJECT_CHAT}> 
                 <IconButton> 
                     <MdChatBubble className="navbar__icon"/>
                 </IconButton>

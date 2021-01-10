@@ -1,4 +1,26 @@
-.messageBox {
+.message {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    max-width: 728px;
+    margin: 0 auto;
+}
+  
+.sent {
+    flex-direction: row-reverse;
+}
+
+.sent p {
+    color: white;
+    background: #BFD4F0;
+    align-self: flex-end;
+}
+.received p {
+    background: #F3F3F3;
+    color: black;
+}
+
+/*.messageBox {
     background: #F3F3F3;
     padding: 5px 20px;
     color: white;
@@ -45,4 +67,4 @@
 
 .backgroundReceived {
     background: #F3F3F3;
-}
+}*/
