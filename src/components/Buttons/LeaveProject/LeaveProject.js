@@ -5,10 +5,7 @@ import { FirebaseContext } from '../../Firebase';
 
 function LeaveProject({projectID, ...rest}) {
     const client = useContext(FirebaseContext);
-    return <IconButton {...rest} onClick={async () => {
-        await client.removeUserFromProject(projectID);
-        window.location.reload();
-    }}>
+    return <IconButton {...rest} onClick={() =>  client.removeUserFromProject(projectID)}>
         <AiOutlineCloseCircle />
     </IconButton>
 }

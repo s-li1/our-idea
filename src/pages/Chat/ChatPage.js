@@ -20,11 +20,13 @@ export default function ChatPage({appClient}) {
 
     useEffect(() => {
         const unsubscribe = firebase
-        .firestore()
-        .collection(MESSAGES)
-        .where('projectID', '==', id).orderBy('timestamp').onSnapshot((snapshot) => {
-          setMessages(snapshot.docs.map((doc) => doc.data()));
-        });
+            .firestore()
+            .collection(MESSAGES)
+            .where('projectID', '==', id)
+            .orderBy('timestamp')
+            .onSnapshot((snapshot) => {
+            setMessages(snapshot.docs.map((doc) => doc.data()));
+            });
     
         return () => {
           // This is cleanup...
