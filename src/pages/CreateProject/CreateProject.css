@@ -1,0 +1,29 @@
+.create-project-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-project-header {
+    padding: 20px 20px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-header, .create-text{
+    align-self: flex-start;
+    padding: 20px;
+    font-size: 1.2rem;
+    margin: 0px;
+}
+
+.form-input {
+    width: 208px;
+    height: 97px;
+}
+
+.createProject {
+    width: 179px;
+    height: 49px;
+}
