@@ -20,7 +20,6 @@ export default function CreateForm({firebase}) {
           }));
     }
 
-
     const handleSubmit = (event) => {
         firebase.createAccount(form.email, form.password)
         .then(authUser => {
@@ -64,7 +63,8 @@ export default function CreateForm({firebase}) {
                     onChange={handleInputChange}
                     type="password"
                 />
-                <button className="create" type="submit">Create Account</button>
+                <button className="create" type="submit">Create an Account</button>
+                
                 {form.error && <p>{form.error.message}</p>}
             </form>
         </div>

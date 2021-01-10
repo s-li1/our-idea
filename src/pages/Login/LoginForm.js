@@ -36,7 +36,8 @@ export default function LoginForm({firebase}) {
 
     return (
         <div>
-            <form onSubmit ={handleSubmit}>
+            <form onSubmit ={handleSubmit} className="signin-account-form">
+                <h1 className="input-header">Email</h1>
                 <input
                     name="email"
                     value={form.email}
@@ -44,6 +45,7 @@ export default function LoginForm({firebase}) {
                     type="text"
                     placeholder="Email Address"
                 />
+                <h1 className="input-header">Password</h1>
                 <input
                     name="password"
                     value={form.password}
@@ -51,7 +53,7 @@ export default function LoginForm({firebase}) {
                     type="password"
                     placeholder="Password"
                 />
-                <button className="create" type="submit">Sign In</button>
+                <button className="signin" type="submit">Sign In</button>
                 {form.error && <p>{form.error.message}</p>}
             </form>
         </div>

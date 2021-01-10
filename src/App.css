@@ -4,6 +4,10 @@
   --background: white;
   --main-button-color: #8FB8ED;
 }
+.App {
+  text-align: center;
+  font-family: 'Red Hat Text', sans-serif;
+}
 
 html {
   background-color: #C2BBF0;
