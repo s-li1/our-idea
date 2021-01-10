@@ -1,13 +1,14 @@
 import React from 'react'
 import Navigation from '../../components/Navigation/Navigation'
-import Navbar from '../../components/Navbar/Navbar'
-
+import SwipeCards from '../../components/Cards/SwipeCards'
+import * as DUMMY_DATA from '../../constants/dummyData'
 
 export default function HomePage() {
     return (
         <div>
-            <Navbar />
+            <Navigation/>
             <h1>Home</h1>
+            <SwipeCards db={DUMMY_DATA.DB}/>
         </div>
     )
 }
