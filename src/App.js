@@ -8,6 +8,7 @@ import CreateAccountPage from './pages/CreateAccount/CreateAccountPage';
 import CreateProjectPage from './pages/CreateProject/CreateProjectPage';
 import LoginPage from './pages/Login/LoginPage';
 import HomePage from './pages/Home/HomePage';
+import ProjectListPage from './pages/ProjectList/ProjectListPage';
 import ChatPage from './pages/Chat/ChatPage';
 import { useContext } from 'react';
 import { FirebaseContext } from './components/Firebase';
@@ -23,6 +24,7 @@ function App() {
         <Route path={ROUTES.PROJECT_CREATE} component={CreateProjectPage}/>
         <Route path={ROUTES.PROJECT_CHAT} component={ChatPage}/>
         <Route path={ROUTES.LOGIN} component={LoginPage}/>
+        <Route path={ROUTES.PROJECTS} component={ProjectListPage}/>
         <Route path={ROUTES.HOME} component={HomePage}/>
         <Redirect to={client.auth.currentUser ? ROUTES.HOME : ROUTES.LOGIN}/>
       </Switch>

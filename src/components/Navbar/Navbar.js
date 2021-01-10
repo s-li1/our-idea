@@ -34,7 +34,7 @@ export default function Navbar () {
                 </IconButton>
             </Link>
 
-            <Link to={ROUTES.HOME}> 
+            <Link to={ROUTES.PROJECTS}> 
                 <IconButton> 
                     <MdViewModule className="navbar__icon"/>
                 </IconButton>

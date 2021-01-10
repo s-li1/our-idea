@@ -35,7 +35,7 @@ export default function SwipeCards(props) {
     }
 
     return (
-        <div className="cards">
+        <div className="cards SwipeCards">
 
             <div id="swipe-cards-container">
                 {projects.map((proj, i) =>  <TinderCard
