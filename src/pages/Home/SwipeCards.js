@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import TinderCard from 'react-tinder-card';
 
 import { IconButton } from '@material-ui/core';
@@ -6,14 +6,21 @@ import DoneIcon from '@material-ui/icons/Done';
 import CloseIcon from '@material-ui/icons/Close';
 
 import './SwipeCards.css';
-// import AppClient from '../AppClient/AppClient';
 
 const alreadyRemoved = [];
 
-export default function SwipeCards(props) {
-    let projectsState = props.db;
+export default function SwipeCards({ appClient }) {
+    const [ projects, setProjects ] = useState([]);
 
-    const [ projects, setProjects ] = useState(props.db);
+    useEffect(() => {
+        async function fetchData() {
+            const currProj = await appClient.getNextProject();
+            const nextProj = await appClient.getNextProject();
+            setProjects([nextProj, currProj].filter((p) => p)); // filter the undefined
+        }
+        fetchData();
+    }, [appClient]);
+
     const [ lastDirection, setLastDirection ] = useState();
     const [ topCardIndex, setTopCardIndex ] = useState(projects.length - 1);
 
@@ -44,9 +51,9 @@ export default function SwipeCards(props) {
                                             onSwipe={(directionSwiped) => onSwipe(proj.id, directionSwiped)}
                                             flickOnSwipe={true}
                                             preventSwipe={['up', 'down']}
-                                            key={proj.id}>
+                                            key={proj.projectID}>
                                         <div className='swipe-card'>
-                                            <img className="swipe-card-thumbnail" src={proj.img} alt=""></img>
+                                            <img className="swipe-card-thumbnail" src="logo192.png" alt=""></img>
                                             <div className="swipe-card-name">
                                                 {proj.name}
                                             </div>
@@ -55,6 +62,7 @@ export default function SwipeCards(props) {
                                             </div>
                                         </div>
                                         </TinderCard>)}
+                {(projects.length === 0) ? <div id="no-projs-msg">No projects were found.</div> : null}
             </div>
             <div className="buttons">
                 <IconButton onClick={() => swipe('left')}>

@@ -14,8 +14,8 @@ export default function LoginForm() {
     const history = useHistory();
 
     const initialFormState = {
-        email: '',
-        password: '',
+        email: '0@0.com',
+        password: '123123',
         error: null
     }
 

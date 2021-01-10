@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ProjectCard from '../../components/Cards/ProjectCard';
+import ProjectCard from '../../components/ProjectCard/ProjectCard';
 
 import './ProjectList.css';
 

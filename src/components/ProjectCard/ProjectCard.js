@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './SwipeCards.css';
 import './ProjectCard.css';
 
 import { MdForum } from 'react-icons/md'
