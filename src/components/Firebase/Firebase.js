@@ -1,5 +1,7 @@
 import app from 'firebase/app';
 import 'firebase/auth'
+import "firebase/firestore";
+
 import { USERS } from '../../constants/collections';
 
 import config from './config';
@@ -7,7 +9,6 @@ import config from './config';
 class Firebase {
     constructor() {
         app.initializeApp(config);
-
         this.auth = app.auth();
     }
 

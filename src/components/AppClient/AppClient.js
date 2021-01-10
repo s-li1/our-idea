@@ -1,15 +1,17 @@
-import {RIGHT} from "../constants/swipeActions";
-import {USERS, PROJECTS, MATCHES} from "../constants/collections";
+import {RIGHT} from "../../constants/swipeActions";
+import {USERS, PROJECTS, MATCHES} from "../../constants/collections";
 import firebase from "firebase/app";
-import {v1 as uuidv1} from 'uuid';
 
-class AppClient {
+import {v1 as uuidv1} from 'uuid';
+import Firebase from "../Firebase/Firebase";
+
+class AppClient extends Firebase {
 
     /**
      * A timestamp unique to this user (used for tie breaks)
      * @returns {string}
      */
-    createUIDTimestamp = () => `${new Date().getTime().toString().padEnd(10, "0")}_${firebase.auth().currentUser.uid}`;
+    createUIDTimestamp = () => `${new Date().getTime().toString().padEnd(10, "0")}_${this.auth.currentUser.uid}`;
 
     /**
      * Given project data, creates a project in the DB and returns the project ID.
@@ -29,7 +31,7 @@ class AppClient {
             });
 
         /** @type {Match} */
-        const match = { userID: firebase.auth().currentUser.uid, projectID: uuid };
+        const match = { userID: this.auth.currentUser.uid, projectID: uuid };
 
         // Add the person direct to this project as a match
         await firebase
@@ -44,8 +46,8 @@ class AppClient {
      * Returns an array of all projects the authenticated user is a part of.
      * @returns {Promise<Project[]>}
      */
-    async viewProjects() {
-        const uid = firebase.auth().currentUser.uid;
+    async getMyProjects() {
+        const uid = this.auth.currentUser.uid;
 
         // Find all the matches
         const projectIDs = await firebase
@@ -87,7 +89,7 @@ class AppClient {
      * @returns {Promise<Project>}
      */
     async getNextProject() {
-        const uid = firebase.auth().currentUser.uid;
+        const uid = this.auth.currentUser.uid;
         const user = await firebase
             .firestore()
             .collection(USERS)
@@ -98,19 +100,16 @@ class AppClient {
             );
         
         // Grab all the projects we're currently in to avoid them
-        const currentProjects = (await this.viewProjects()).map(p => p.projectID);
+        const currentProjects = (await this.getMyProjects()).map(p => p.projectID);
 
         // Finally, grab the next project to shows
-        return firebase
+        return /** @type {Promise<Project>} */ (firebase
             .firestore()
             .collection(PROJECTS)
             .where("timestamp", ">", user.lastProjectTimestamp)
-            .where("projectID", "not-in", currentProjects)
-            .orderBy("projectID")
+            .orderBy("timestamp")
             .get()
-            .then(qs => 
-                /** @type {Project} */ (qs.docs[0].data())
-            );
+            .then(qs => qs.docs.filter(v => !currentProjects.includes(v.data().projectID))[0].data()));
     }
 
     /**
@@ -120,7 +119,7 @@ class AppClient {
      * @returns {Promise<void>}
      */
     async swipeProject(projectID, direction) {
-        const uid = firebase.auth().currentUser.uid;
+        const uid = this.auth.currentUser.uid;
 
         // If we have a match, add this to the project matches collection
         if (direction === RIGHT) {
@@ -152,7 +151,7 @@ class AppClient {
      * @param {string} userID 
      * @returns {Promise<User>}
      */
-    async viewUser(userID) {
+    async getUser(userID) {
         return firebase
             .firestore()
             .collection(USERS)
