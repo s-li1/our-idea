@@ -152,7 +152,6 @@ class BasicAppClient extends AuthClient {
      * @returns {Promise<User>}
      */
     async getUser(userID) {
-        console.log(userID)
         return firebase
             .firestore()
             .collection(USERS)

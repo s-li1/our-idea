@@ -1,5 +1,9 @@
-import { React, useState } from 'react'
+import React, { useState } from 'react'
 import './CreateProject.css'
+import * as ROUTES from '../../constants/routes';
+import * as STATES from '../../constants/states';
+import { useHistory } from 'react-router-dom';
+import Spinner from '../../components/Spinner/Spinner';
 
 export default function CreateProjectForm ({appClient}) {
     const initialProjectState = {
@@ -7,8 +11,10 @@ export default function CreateProjectForm ({appClient}) {
         description: '',
         maxMembers: 0
     }
+    const history = useHistory();
 
     const [project, setProject] = useState(initialProjectState)
+    const [state, setState] = useState(STATES.DEFAULT);
 
     /* save project state changes */
     const handleInputChange = (event) => {
@@ -19,13 +25,21 @@ export default function CreateProjectForm ({appClient}) {
           }));
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const uuid = appClient.createProject(project);
+        try {
+            setState(STATES.LOADING);
+            await appClient.createProject(project);
+            history.push(ROUTES.HOME);
+        } catch (error) {
+            setState(STATES.DEFAULT);
+            setProject(prevState => ({...prevState, error}))
+        }
     }
     
     return (
         <div>
+            {state === STATES.LOADING ? <Spinner/> :
             <form className="create-project-form" onSubmit={handleSubmit}> 
                 <h1 className="input-header">Name: </h1>
                 <input name="name"
@@ -58,7 +72,7 @@ export default function CreateProjectForm ({appClient}) {
                     <button className="createProject" type="submit">Create Project</button>
                 </div>
             {project.error && <p>{project.error.message}</p>}
-            </form>
+            </form>}
         </div>
 
     );
