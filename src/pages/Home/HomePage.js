@@ -5,7 +5,7 @@ import * as DUMMY_DATA from '../../constants/dummyData'
 
 export default function HomePage() {
     return (
-        <div>
+        <div className="screen-container">
             <Navbar/>
             <SwipeCards db={DUMMY_DATA.DB}/>
         </div>

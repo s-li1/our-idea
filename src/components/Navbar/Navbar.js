@@ -9,6 +9,8 @@ import { MdChatBubble } from 'react-icons/md'
 import { MdExitToApp } from 'react-icons/md'
 import { MdViewModule } from 'react-icons/md'
 import {IconButton} from '@material-ui/core';
+import SignOut from '../SignOut/SignOut';
+import { FirebaseContext } from '../Firebase';
 
 
 export default function Navbar () {
@@ -37,12 +39,9 @@ export default function Navbar () {
                     <MdViewModule className="navbar__icon"/>
                 </IconButton>
             </Link>
-
-            <Link to={ROUTES.LOGIN}> 
-                <IconButton> 
-                    <MdExitToApp className="navbar__icon"/>
-                </IconButton>
-            </Link>
+            <FirebaseContext.Consumer>
+                {firebase => <SignOut firebase={firebase}/>}
+            </FirebaseContext.Consumer> 
         </div>
     )
 }

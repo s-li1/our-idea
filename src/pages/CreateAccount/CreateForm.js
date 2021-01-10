@@ -6,6 +6,9 @@ import Spinner from '../../components/Spinner/Spinner';
 import * as ROUTES from '../../constants/routes';
 import * as STATES from '../../constants/states';
 
+import './CreateAccount.css'
+import { AiOutlineArrowRight } from 'react-icons/ai';
+
 export default function CreateForm() {
     const { setSession } = useContext(SessionContext);
     const firebase = useContext(FirebaseContext);
@@ -51,37 +54,40 @@ export default function CreateForm() {
     return (
         <div>
             {state === STATES.LOADING ? <Spinner/> :
-            <form onSubmit ={handleSubmit}>
+            
+            <form onSubmit ={handleSubmit} className="create-account-form">
+                <label className="form-label">Username</label>
                 <input
                     name="username"
                     value={form.username}
                     onChange={handleInputChange}
                     type="text"
-                    placeholder="Full Name"
                 />
+                <label className="form-label">Email Address</label>
                 <input
                     name="email"
                     value={form.email}
                     onChange={handleInputChange}
                     type="text"
-                    placeholder="Email Address"
                 />
+                <label className="form-label">Password</label>
                 <input
                     name="password"
                     value={form.password}
                     onChange={handleInputChange}
                     type="password"
-                    placeholder="Password"
                 />
+                <label className="form-label">Confirm Password</label>
                  <input
                     name="confirmPassword"
                     value={form.confirmPassword}
                     onChange={handleInputChange}
                     type="password"
-                    placeholder="Confirm Password"
                 />
-                <button type="submit" onClick={handleSubmit}>Create Account</button>
-                {form.error && <p>{form.error.message}</p>}
+                <div className="create">
+                    <button className="arrow" type="submit" onClick={handleSubmit}><AiOutlineArrowRight className="arrow-icon"/></button>
+                    {form.error && <p>{form.error.message}</p>}
+                </div>
             </form>}
         </div>
     )
