@@ -118,3 +118,7 @@ a:visited, a:hover, a:active {
 .switch-wrapper > div {
   position: absolute;
 }
+
+.lightbulb-logo {
+  color: #4220B5;
+}
