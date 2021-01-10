@@ -1,7 +1,8 @@
+import React from 'react';
+import './components/Firebase'
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import * as ROUTES from './constants/routes'
-
 import LandingPage from './pages/Landing/LandingPage';
 import CreateAccountPage from './pages/CreateAccount/CreateAccountPage';
 import CreateProjectPage from './pages/CreateProject/CreateProjectPage';

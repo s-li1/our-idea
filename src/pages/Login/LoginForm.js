@@ -4,6 +4,7 @@ import { FirebaseContext } from '../../components/Firebase';
 import { SessionContext } from '../../components/Session';
 import Spinner from '../../components/Spinner/Spinner';
 import * as ROUTES from '../../constants/routes';
+import { AiOutlineArrowRight } from 'react-icons/ai';
 import * as STATES from '../../constants/states';
 
 export default function LoginForm() {
@@ -46,24 +47,25 @@ export default function LoginForm() {
     return (
         <div>
             {state === STATES.LOADING ? <Spinner/> :
-            <form onSubmit ={handleSubmit}>
+            <form onSubmit ={handleSubmit} className="signin-account-form">
+                <label className="form-label">Email</label>
                 <input
                     name="email"
                     value={form.email}
                     onChange={handleInputChange}
                     type="text"
-                    placeholder="Email Address"
                 />
+                <label className="form-label">Password</label>
                 <input
                     name="password"
                     value={form.password}
                     onChange={handleInputChange}
                     type="password"
-                    placeholder="Password"
                 />
-                <button type="submit">Sign In</button>
-                {form.error && <p>{form.error.message}</p>}
-            </form>}
+                <button className="arrow" type="submit"><AiOutlineArrowRight className="arror-icon"/></button>
+                {form.error && <p className="error">{form.error.message}</p>}
+            </form>
+            }
         </div>
     )
 }

@@ -1,5 +1,4 @@
-import { React, useState } from 'react'
-import Navigation from '../../components/Navigation/Navigation'
+import React from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import CreateProjectForm from './CreateProjectForm'
 import './CreateProject.css'

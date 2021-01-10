@@ -1,39 +1,106 @@
+:root {
+  --purple: #C2BBF0;
+  --purple-blue: #8FB8ED;
+  --background: white;
+  --main-button-color: #4220B5;
+}
 .App {
   text-align: center;
   font-family: 'Red Hat Text', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  background-color: var(--main-button-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.screen-container {
+  min-height: 90vh;
+  width: 400px;
+  position: relative;
+  bottom: -50px;
+  margin: auto;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 40px;
+  color: black;
+  background-color: var(--background);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
   color: white;
+  font-size: 1.1rem;
+  margin: 20px;
+  background-color: var(--main-button-color);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover, button:focus {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+input {
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  width: 80%;
+  border-color: #F3F4F6;
+  border-style:solid;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  
+}
+
+
+input:focus {
+  outline: none;
+  border-color: #5024e0;
+  background-color: rgba(	217, 187, 249, 0.2);
+}
+
+button:focus {
+  outline:none;
+}
+
+.arrow {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+.arrow-icon {
+  height: 100%;
+  width: 100%;
+}
+
+.error {
+  text-align: center;
+  padding: 0 20px;
+}
+
+a:visited, a:hover, a:active {
+  color: var(--main-button-color);
+}
+
+.spinner {
+  position: fixed; /* or absolute */
+  top: 40%;
+  left: 48.5%;
 }
