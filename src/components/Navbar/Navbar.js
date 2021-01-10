@@ -25,12 +25,12 @@ function Navbar ({ classes }) {
                     <MdHome className="navbar__icon" />
                 </IconButton>
             </Link>
-            
             <Link to={ROUTES.PROJECTS}> 
                 <IconButton className={classes.icon}> 
                     <MdViewModule className="navbar__icon"/>
                 </IconButton>
             </Link>
+
             <FirebaseContext.Consumer>
                 {firebase => <SignOut firebase={firebase}/>}
             </FirebaseContext.Consumer> 

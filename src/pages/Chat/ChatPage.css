@@ -1,6 +1,12 @@
-.messages {
-    height: 76vh;
+.messages-container {
+    height: 65vh;
     width: 400px;
+    background-color: white;
+    overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+.messages-container::-webkit-scrollbar {
+    display: none;
 }

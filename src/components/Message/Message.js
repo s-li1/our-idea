@@ -4,10 +4,11 @@ import { FirebaseContext } from '../../components/Firebase';
 import {ChatAppClient} from '../../clients/ChatAppClient/ChatAppClient';
 import { SessionContext } from '../../components/Session';
 
+
 function Message(props) {
   const { message: { text, senderID } } = props;
-  const { session: { userID } } = useContext(SessionContext);
-
+  const client = useContext(FirebaseContext);
+  const userID = client.auth.currentUser.uid;
   return (
     <div>
       {senderID === userID ? 

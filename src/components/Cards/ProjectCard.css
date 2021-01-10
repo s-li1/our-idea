@@ -1,5 +1,5 @@
 .project-card {
-    padding: 12px;
+    padding: 5px 20px 60px 20px;
     color: #505050;
     width: 100%;
     justify-content: center;
@@ -60,11 +60,17 @@
 .container {
     justify-content: space-between;
     flex-direction: column;
-    height: 10vh;
+    height: 10px;
     display: flex;
 }
 
-.container .btn-holder {
-    justify-content: flex-end;
+.btn-holder {
     display: flex;
+    justify-content: flex-end;
 }
+
+.button-padding {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
