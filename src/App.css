@@ -99,5 +99,8 @@ a:visited, a:hover, a:active {
   color: var(--main-button-color);
 }
 
-.back-link {
+.spinner {
+  position: fixed; /* or absolute */
+  top: 40%;
+  left: 48.5%;
 }

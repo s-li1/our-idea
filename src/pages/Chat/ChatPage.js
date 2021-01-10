@@ -19,5 +19,5 @@ export default function ChatPage() {
                     </div>
                     <MessageBar />
                 </div> */}
-            </div>;
+            </div>
 }

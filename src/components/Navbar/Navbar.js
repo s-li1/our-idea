@@ -39,12 +39,6 @@ export default function Navbar () {
                     <MdViewModule className="navbar__icon"/>
                 </IconButton>
             </Link>
-
-            <Link to={ROUTES.LOGIN}> 
-                <IconButton> 
-                    <MdExitToApp className="navbar__icon"/>
-                </IconButton>
-            </Link>
             <FirebaseContext.Consumer>
                 {firebase => <SignOut firebase={firebase}/>}
             </FirebaseContext.Consumer> 

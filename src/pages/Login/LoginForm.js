@@ -48,7 +48,7 @@ export default function LoginForm() {
         <div>
             {state === STATES.LOADING ? <Spinner/> :
             <form onSubmit ={handleSubmit} className="signin-account-form">
-                <label className="form-label">Username</label>
+                <label className="form-label">Email</label>
                 <input
                     name="email"
                     value={form.email}
@@ -64,7 +64,8 @@ export default function LoginForm() {
                 />
                 <button className="arrow" type="submit"><AiOutlineArrowRight className="arror-icon"/></button>
                 {form.error && <p className="error">{form.error.message}</p>}
-            </form>}
+            </form>
+            }
         </div>
     )
 }
