@@ -9,26 +9,34 @@ import LoginPage from './pages/Login/LoginPage';
 import HomePage from './pages/Home/HomePage';
 import ProjectListPage from './pages/ProjectList/ProjectListPage';
 import ChatPage from './pages/Chat/ChatPage';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { FirebaseContext } from './components/Firebase';
+import { SessionContext } from './components/Session';
 
 function App() {
-  const client = useContext(FirebaseContext);
-
+  const [session, setSession] = useState(null);
   return (
-    <Router>
-      <Switch>
-        <Route exact path={ROUTES.LANDING} component={LandingPage}/>
-        <Route path={ROUTES.CREATE_ACCOUNT} component={CreateAccountPage}/>
-        <Route path={ROUTES.PROJECT_CREATE} component={CreateProjectPage}/>
-        <Route path={ROUTES.PROJECT_CHAT} component={ChatPage}/>
-        <Route path={ROUTES.LOGIN} component={LoginPage}/>
-        <Route path={ROUTES.PROJECTS} component={ProjectListPage}/>
-        <Route path={ROUTES.HOME} component={HomePage}/>
-        <Redirect to={client.auth.currentUser ? ROUTES.HOME : ROUTES.LOGIN}/>
-      </Switch>
-    </Router>
+    <SessionContext.Provider value={{session, setSession}}>
+      <Router>
+        <Switch>
+          <Route exact path={ROUTES.LANDING} component={LandingPage}/>
+          <AuthenticatedRoute exact path={ROUTES.PROJECTS} component={ProjectListPage}/>
+          <AuthenticatedRoute path={ROUTES.PROJECT_CREATE} component={CreateProjectPage}/>
+          <AuthenticatedRoute path={ROUTES.PROJECT_CHAT} component={ChatPage}/>
+          <AuthenticatedRoute path={ROUTES.HOME} component={HomePage}/>
+          <Route path={ROUTES.LOGIN} component={LoginPage}/>
+          <Route path={ROUTES.CREATE_ACCOUNT} component={CreateAccountPage}/>
+          <Redirect to={ROUTES.HOME}/>
+        </Switch>
+      </Router>
+    </SessionContext.Provider>
   );
+}
+
+function AuthenticatedRoute({component,...rest}) {
+  const { auth: { currentUser } } = useContext(FirebaseContext);
+  const { session } = useContext(SessionContext);
+  return <Route {...rest} component={currentUser && session ? component : () => <Redirect to={ROUTES.LANDING} />} />
 }
 
 export default App;

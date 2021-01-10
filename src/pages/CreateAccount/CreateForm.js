@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { FirebaseContext } from '../../components/Firebase';
+import { SessionContext } from '../../components/Session';
+import Spinner from '../../components/Spinner/Spinner';
+import * as ROUTES from '../../constants/routes';
+import * as STATES from '../../constants/states';
 
-
-export default function CreateForm({firebase}) {
+export default function CreateForm() {
+    const { setSession } = useContext(SessionContext);
+    const firebase = useContext(FirebaseContext);
+    const history = useHistory();
 
     const initialFormState = {
         username:'',
@@ -12,6 +20,8 @@ export default function CreateForm({firebase}) {
     }
 
     const [form, setForm] = useState(initialFormState);
+    const [state, setState] = useState(STATES.DEFAULT);
+
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setForm(prevState => ({
@@ -21,20 +31,26 @@ export default function CreateForm({firebase}) {
     }
 
 
-    const handleSubmit = (event) => {
-        firebase.createAccount(form.email, form.password)
-        .then(authUser => {
-            setForm(initialFormState);
-        })
-        .catch(error=> {
-            setForm({error});
-        });
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        try {
+            setState(STATES.LOADING);
+            await firebase.createAccount(form.email, form.password, {
+                name: form.username
+            });
+            await firebase.login(form.email, form.password);
+            setSession(await firebase.getUser(firebase.auth.currentUser.uid));
+            history.push(ROUTES.HOME);
+        } catch (error) {
+            setState(STATES.DEFAULT);
+            setForm(prevState => ({...prevState, error}));
+        }
     }
 
 
     return (
         <div>
+            {state === STATES.LOADING ? <Spinner/> :
             <form onSubmit ={handleSubmit}>
                 <input
                     name="username"
@@ -64,9 +80,9 @@ export default function CreateForm({firebase}) {
                     type="password"
                     placeholder="Confirm Password"
                 />
-                <button type="submit">Create Account</button>
+                <button type="submit" onClick={handleSubmit}>Create Account</button>
                 {form.error && <p>{form.error.message}</p>}
-            </form>
+            </form>}
         </div>
     )
 }
