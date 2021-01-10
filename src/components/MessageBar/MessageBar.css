@@ -1,0 +1,10 @@
+.message-bar-text {
+    width: 75%;
+    padding-right: 50px;    
+    margin-left: 50px;
+}
+
+.message-bar-icon {
+    position: relative;
+    left: -50px;
+}
