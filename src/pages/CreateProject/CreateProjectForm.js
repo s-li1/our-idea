@@ -41,7 +41,7 @@ export default function CreateProjectForm ({appClient}) {
         <div>
             {state === STATES.LOADING ? <Spinner/> :
             <form className="create-project-form" onSubmit={handleSubmit}> 
-                <h1 className="input-header">Name: </h1>
+                <label className="input-header">Name: </label>
                 <input name="name"
                        value={project.name}
                        onChange={handleInputChange}
@@ -49,18 +49,18 @@ export default function CreateProjectForm ({appClient}) {
                        type="text">
                 </input>
 
-                <h1 className="input-header">Description: </h1>
+                <label className="input-header">Description: </label>
                 <textarea name="description"
                        className="form-input"
                        value={project.description}
                        onChange={handleInputChange}
-                       placeholder="Max 200 words..."
+                       placeholder="Maximum of 200 words"
                        maxLength={200}
                        type="text"
                        >
                 </textarea>
 
-                <h1 className="input-header">Max # of People: </h1>
+                <label className="input-header">Maximum Number of People: </label>
                 <input name="maxMembers"
                        value={project.maxMembers}
                        onChange={handleInputChange}

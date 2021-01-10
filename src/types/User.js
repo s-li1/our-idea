@@ -4,4 +4,5 @@
  * @property {string} [userID]
  * @property {string} [lastProjectTimestamp]
  * @property {string} name
+ * @property {string} github
  */

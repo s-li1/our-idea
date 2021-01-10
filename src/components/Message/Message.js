@@ -6,16 +6,22 @@ import { SessionContext } from '../../components/Session';
 
 
 function Message(props) {
-  
   const { message: { text, senderID } } = props;
   const client = useContext(FirebaseContext);
   const userID = client.auth.currentUser.uid;
-  console.log(userID);
-  const isSender = senderID === userID ? 'sent' : 'received';
-
   return (
-    <div className={`message ${isSender}`}>
-      <p>{text}</p>
+    <div>
+      {senderID === userID ? 
+      <div className="messageContainer justfyEnd">
+        <div className="messageBox backgroundPurple">
+          <p className="messageText white">{text}</p>
+        </div>
+      </div> : 
+      <div className= "messageContainer justifyStart">
+        <div className="messageBox backgroundLight">
+          <p className="messageText dark">{text}</p>
+        </div>
+      </div>}
     </div>
   );
 }

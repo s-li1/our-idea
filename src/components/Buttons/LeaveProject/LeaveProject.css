@@ -1,0 +1,3 @@
+.leave-button:hover {
+    color: var(--error-color);
+}

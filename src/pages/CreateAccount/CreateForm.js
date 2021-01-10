@@ -17,6 +17,7 @@ export default function CreateForm() {
     const initialFormState = {
         username:'',
         email:'',
+        github: '',
         password:'',
         confirmPassword:'',
         error: null
@@ -39,7 +40,8 @@ export default function CreateForm() {
         try {
             setState(STATES.LOADING);
             await firebase.createAccount(form.email, form.password, {
-                name: form.username
+                name: form.username,
+                github: form.github
             });
             await firebase.login(form.email, form.password);
             setSession(await firebase.getUser(firebase.auth.currentUser.uid));
@@ -70,6 +72,13 @@ export default function CreateForm() {
                     onChange={handleInputChange}
                     type="text"
                 />
+                <label className="form-label">Github</label>
+                <input
+                    name="github"
+                    value={form.github}
+                    onChange={handleInputChange}
+                    type="text"
+                />
                 <label className="form-label">Password</label>
                 <input
                     name="password"
@@ -86,7 +95,7 @@ export default function CreateForm() {
                 />
                 <div className="create">
                     <button className="arrow" type="submit" onClick={handleSubmit}><AiOutlineArrowRight className="arrow-icon"/></button>
-                    {form.error && <p>{form.error.message}</p>}
+                    {form.error && <p className="error">{form.error.message}</p>}
                 </div>
             </form>}
         </div>

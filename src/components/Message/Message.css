@@ -1,41 +1,10 @@
-.message {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    max-width: 728px;
-    margin: 0 auto;
-}
-  
-.sent {
-    flex-direction: row-reverse;
-}
-
-.sent p {
-    color: white;
-    background: #BFD4F0;
-    align-self: flex-end;
-}
-.received p {
-    background: #F3F3F3;
-    color: black;
-}
-
-/*.messageBox {
-    background: #F3F3F3;
+.messageBox {
+    border-radius: 20px;
     padding: 5px 20px;
     color: white;
     display: inline-block;
-    overflow:auto
-}
-
-.messageText {
-    width: 100%;
-    letter-spacing: 0;
-    float: left;
-    font-size: 10px;
-    color: black;
-    word-wrap: break-word;
-    overflow:auto;
+    max-width: 80%;
+    margin: 3px;
 }
 
 .messageContainer {
@@ -43,14 +12,23 @@
     justify-content: flex-end;
     padding: 0 5%;
     margin-top: 3px;
-    height: 10%;
-    overflow:auto;
 }
 
-.sentText {
-    display: flex;
-    font-size:10px;
-    color: #828282;
+.backgroundPurple {
+    background-color: var(--main-button-color);
+}
+
+.backgroundLight {
+    background-color: #F3F3F3;
+
+}
+
+.white {
+    color: white;
+}
+
+.dark {
+    color: black;
 }
 
 .justifyStart {
@@ -60,11 +38,3 @@
 .justifyEnd {
     justify-content: flex-end;
 }
-
-.backgroundSent {
-    background: #BFD4F0;
-}
-
-.backgroundReceived {
-    background: #F3F3F3;
-}*/

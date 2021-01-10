@@ -1,6 +1,8 @@
 export const DB = [
     {
         id: '0',
+        currentMembers: 1,
+        maxMembers: 5,
         name: 'DroneDash',
         desc: 'Make a food delivery app with self-flying drones',
         user: 'timapple@gmail.com',
@@ -20,4 +22,28 @@ export const DB = [
         user: 'def@gmail.com',
         img: 'logo512.png'
     },
+]
+
+/** @type {User[]} */
+export const users = [
+    {
+     github: '/',
+     name: 'Jimmy'
+    },
+    {
+     github: '/',
+     name: 'James'
+    },
+    {
+     github: '/',
+     name: 'James'
+    },
+    {
+     github: '/',
+     name: 'James'
+    },
+    {
+     github: '/',
+     name: 'James'
+    }
 ]
