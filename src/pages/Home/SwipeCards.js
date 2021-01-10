@@ -1,39 +1,53 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import TinderCard from 'react-tinder-card';
-
 import { IconButton } from '@material-ui/core';
 import DoneIcon from '@material-ui/icons/Done';
 import CloseIcon from '@material-ui/icons/Close';
+import firebase from "firebase/app";
+import { PROJECTS } from "../../constants/collections";
 
 import './SwipeCards.css';
 
 const alreadyRemoved = [];
 
 export default function SwipeCards({ appClient }) {
+    const [ myProjects, setMyProjects ] = useState([]);
     const [ projects, setProjects ] = useState([]);
+    const userID = appClient.auth.currentUser.uid;
 
     useEffect(() => {
         async function fetchData() {
-            const currProj = await appClient.getNextProject();
-            const nextProj = await appClient.getNextProject();
-            setProjects([nextProj, currProj].filter((p) => p)); // filter the undefined
+            const myProjs = await appClient.getMyProjects();
+            setMyProjects(myProjs);
+
+            const unsubscribe = firebase
+                .firestore()
+                .collection(PROJECTS)
+                .orderBy('timestamp', 'desc')
+                .onSnapshot((snapshot) => {
+                    setProjects(snapshot.docs.map((doc) => doc.data()).filter(p => p.createdBy !== userID 
+                                                                                && p.currentMembers < p.maxMembers 
+                                                                                && !myProjects.includes(p.projectID)));
+                });
+
+            return () => {
+                unsubscribe();
+            };
         }
         fetchData();
-    }, [appClient]);
+        
+    }, [appClient, myProjects, userID]);
 
-    const [ lastDirection, setLastDirection ] = useState();
     const [ topCardIndex, setTopCardIndex ] = useState(projects.length - 1);
 
     const childRefs = useMemo(() => Array(projects.length).fill(0).map(i => React.createRef()), [projects]);
 
     const onSwipe = async (projID, direction) => {
         console.log(`You swiped ${direction} on ${projID}`);
-        setLastDirection(direction);
         alreadyRemoved.push(projID);
         setTopCardIndex(topCardIndex - 1);
 
-        // let client = new AppClient();
-        // await client.swipeProject(projID, direction);
+        // await appClient.swipeProject(projID, direction);
     }
 
     const swipe = (dir) => {
