@@ -27,18 +27,13 @@ export default function Navbar () {
                     <MdHome className="navbar__icon" />
                 </IconButton>
             </Link>
-            
-            <Link to={ROUTES.PROJECT_CHAT}> 
-                <IconButton> 
-                    <MdChatBubble className="navbar__icon"/>
-                </IconButton>
-            </Link>
 
             <Link to={ROUTES.PROJECTS}> 
                 <IconButton> 
                     <MdViewModule className="navbar__icon"/>
                 </IconButton>
             </Link>
+
             <FirebaseContext.Consumer>
                 {firebase => <SignOut firebase={firebase}/>}
             </FirebaseContext.Consumer> 
