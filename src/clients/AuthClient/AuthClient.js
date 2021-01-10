@@ -23,7 +23,8 @@ class AuthClient {
         await app
             .firestore()
             .collection(USERS)
-            .add({
+            .doc(this.auth.currentUser.uid)
+            .set({
                 ...user, 
                 userID: this.auth.currentUser.uid,
                 lastProjectTimestamp: "0"
