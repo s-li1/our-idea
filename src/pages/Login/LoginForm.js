@@ -47,7 +47,8 @@ export default function LoginForm() {
     return (
         <div>
             {state === STATES.LOADING ? <Spinner/> :
-            <form onSubmit ={handleSubmit}>
+            <form onSubmit ={handleSubmit} className="signin-account-form">
+                <label className="form-label">Username</label>
                 <input
                     name="email"
                     value={form.email}

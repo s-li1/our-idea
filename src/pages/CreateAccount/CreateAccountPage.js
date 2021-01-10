@@ -5,6 +5,7 @@ import './CreateAccount.css'
 import { BsFillPersonFill } from 'react-icons/bs';
 import GoBack from '../../components/GoBack/GoBack';
 import * as ROUTES from '../../constants/routes';
+import './CreateAccount.css';
 export default function CreateAccountPage() {
     return (
         <div className="screen-container">

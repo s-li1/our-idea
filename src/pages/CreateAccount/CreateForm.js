@@ -54,7 +54,9 @@ export default function CreateForm() {
     return (
         <div>
             {state === STATES.LOADING ? <Spinner/> :
-            <form onSubmit ={handleSubmit}>
+            
+            <form onSubmit ={handleSubmit} className="create-account-form">
+                <label className="form-label">Username</label>
                 <input
                     name="username"
                     value={form.username}
@@ -83,7 +85,7 @@ export default function CreateForm() {
                     type="password"
                 />
                 <div className="create">
-                    <button className="arror" type="submit" onClick={handleSubmit}><AiOutlineArrowRight className="arror-icon"/></button>
+                    <button className="arrow" type="submit" onClick={handleSubmit}><AiOutlineArrowRight className="arrow-icon"/></button>
                     {form.error && <p>{form.error.message}</p>}
                 </div>
             </form>}

@@ -5,6 +5,7 @@ import './Login.css';
 import { CgHello } from 'react-icons/cg';
 import GoBack from '../../components/GoBack/GoBack';
 import * as ROUTES from '../../constants/routes';
+import './Login.css';
 export default function LoginPage() {
     return (
         <div className="screen-container">
