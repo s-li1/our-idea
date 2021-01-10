@@ -51,7 +51,10 @@ export default function SwipeCards({ appClient }) {
     }
 
     const swipe = (dir) => {
-        if (alreadyRemoved.length === projects.length) return;
+        console.log("reached swipe");
+        if (alreadyRemoved.length === projects.length || projects.length === 0) return;
+        console.log(topCardIndex);
+        console.log(childRefs[topCardIndex]);
         childRefs[topCardIndex].current.swipe(dir) // Swipe the card!
     }
 
