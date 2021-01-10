@@ -4,10 +4,13 @@ import './index.css';
 import App from './App';
 import { FirebaseContext } from './components/Firebase';
 import ChatAppClient from './clients/ChatAppClient/ChatAppClient';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-  <FirebaseContext.Provider value={new ChatAppClient()}>
-    <App />
-  </FirebaseContext.Provider>,
+  <BrowserRouter>
+    <FirebaseContext.Provider value={new ChatAppClient()}>
+      <App />
+      </FirebaseContext.Provider>,
+    </BrowserRouter>,
   document.getElementById('root')
 );

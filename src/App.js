@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './components/Firebase'
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Redirect, useHistory } from 'react-router-dom';
+import { AnimatedSwitch } from 'react-router-transition';
 import { useLocalStorage, writeStorage } from '@rehooks/local-storage';
 import * as ROUTES from './constants/routes'
 import LandingPage from './pages/Landing/LandingPage';
@@ -34,7 +35,10 @@ function App() {
   return ( authState.state === STATES.LOADING ? <Spinner /> :
     <SessionContext.Provider value={{session, setSession}}>
       <Router>
-        <Switch>
+        <AnimatedSwitch atEnter={{ opacity: 0 }}
+          atLeave={{ opacity: 0 }}
+          atActive={{ opacity: 1 }}
+          className="switch-wrapper">
           <Route exact path={ROUTES.LANDING} component={LandingPage}/>
           <AuthenticatedRoute exact path={ROUTES.PROJECTS} component={ProjectListPage} isLoggedIn={authState.auth}/>
           <AuthenticatedRoute path={ROUTES.PROJECT_CREATE} component={CreateProjectPage} isLoggedIn={authState.auth}/>
@@ -43,7 +47,7 @@ function App() {
           <Route path={ROUTES.LOGIN} component={LoginPage}/>
           <Route path={ROUTES.CREATE_ACCOUNT} component={CreateAccountPage}/>
           <Redirect to={ROUTES.HOME}/>
-        </Switch>
+        </AnimatedSwitch>
       </Router>
     </SessionContext.Provider>
   );
