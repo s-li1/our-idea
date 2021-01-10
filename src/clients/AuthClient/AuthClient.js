@@ -1,13 +1,14 @@
 import app from 'firebase/app';
 import 'firebase/auth'
+import "firebase/firestore";
+
 import { USERS } from '../../constants/collections';
 
 import config from './config';
 
-class Firebase {
+class AuthClient {
     constructor() {
         app.initializeApp(config);
-
         this.auth = app.auth();
     }
 
@@ -34,4 +35,4 @@ class Firebase {
     
 }
 
-export default Firebase;
+export default AuthClient;
