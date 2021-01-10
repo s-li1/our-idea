@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import TinderCard from 'react-tinder-card';
-import { IconButton } from '@material-ui/core';
-import DoneIcon from '@material-ui/icons/Done';
-import CloseIcon from '@material-ui/icons/Close';
 import firebase from "firebase/app";
 import { PROJECTS } from "../../constants/collections";
 
-import './SwipeCards.css';
+import '../../components/Cards/SwipeCard/SwipeCards.css';
+import Members from '../../components/Buttons/Members/Members';
 
 export default function SwipeCards({ appClient }) {
     const [ myProjects, setMyProjects ] = useState([]);
@@ -61,6 +59,7 @@ export default function SwipeCards({ appClient }) {
                                             preventSwipe={['up', 'down']}
                                             key={proj.projectID}>
                                         <div className='swipe-card'>
+                                            <div className="swipe-card-members"><Members proj={proj} locked={true}/></div>
                                             <img className="swipe-card-thumbnail" src="logo192.png" alt=""></img>
                                             <div className="swipe-card-name">
                                                 {proj.name}
