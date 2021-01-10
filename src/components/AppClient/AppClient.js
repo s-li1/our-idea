@@ -19,19 +19,20 @@ class AppClient extends Firebase {
      * @returns {Promise<string>} 
      */
     async createProject(project) {
-        const uuid = uuidv1();
+        const projectID = uuidv1();
         await firebase
             .firestore()
             .collection(PROJECTS)
-            .doc(uuid)
+            .doc(projectID)
             .set({
                 ...project, 
-                projectID: uuidv1(),
-                timestamp: this.createUIDTimestamp()
+                projectID,
+                timestamp: this.createUIDTimestamp(),
+                createdBy: this.auth.currentUser.uid
             });
 
         /** @type {Match} */
-        const match = { userID: this.auth.currentUser.uid, projectID: uuid };
+        const match = { userID: this.auth.currentUser.uid, projectID };
 
         // Add the person direct to this project as a match
         await firebase
@@ -39,7 +40,7 @@ class AppClient extends Firebase {
             .collection(MATCHES)
             .add(match);
 
-        return uuid;
+        return projectID;
     }
 
     /**
@@ -49,25 +50,18 @@ class AppClient extends Firebase {
     async getMyProjects() {
         const uid = this.auth.currentUser.uid;
 
-        // Find all the matches
-        const projectIDs = await firebase
+        /** @type {Match[]} */
+        const matches = await firebase
             .firestore()
             .collection(MATCHES)
             .where("userID", "==", uid)
             .get()
-            .then(qs => qs.docs.map(d => 
-                (/** @type {Match} */ (d.data())).projectID)
-            );
+            .then(qs => qs.docs.map(d => /** @type {Match} */ (d.data())));
+        
+        console.log(matches);
 
-        // Using the IDS, finally grab the project data
-        return firebase
-            .firestore()
-            .collection(PROJECTS)
-            .where("projectID", 'in', projectIDs)
-            .get()
-            .then(qs => qs.docs.map(d => 
-                /** @type {Project} */ (d.data()))
-            );
+        return (await Promise.all(matches.map(m => this.getProject(m.projectID))))
+            .sort((a, b) => a.timestamp < b.timestamp ? -1 : 1);
     }
 
     /**
@@ -79,9 +73,9 @@ class AppClient extends Firebase {
         return firebase
             .firestore()
             .collection(PROJECTS)
-            .where("projectID", "==", projectID)
+            .doc(projectID)
             .get()
-            .then(res => /** @type {Project} */ (res.docs[0].data()));
+            .then(res => /** @type {Project} */ (res.data()));
     }
 
     /**
@@ -102,14 +96,16 @@ class AppClient extends Firebase {
         // Grab all the projects we're currently in to avoid them
         const currentProjects = (await this.getMyProjects()).map(p => p.projectID);
 
-        // Finally, grab the next project to shows
+        // Finally, grab the next project to show
         return /** @type {Promise<Project>} */ (firebase
             .firestore()
             .collection(PROJECTS)
             .where("timestamp", ">", user.lastProjectTimestamp)
             .orderBy("timestamp")
             .get()
-            .then(qs => qs.docs.filter(v => !currentProjects.includes(v.data().projectID))[0].data()));
+            .then(qs => qs.docs
+                .map(v => /** @type {Project} */ (v.data()))
+                .filter(p => p.createdBy !== uid && !currentProjects.includes(p.projectID))[0]));
     }
 
     /**
@@ -160,6 +156,20 @@ class AppClient extends Firebase {
             .then(d => 
                 /** @type {User} */ (d.data())
             );
+    }
+
+    /**
+     * Given a project ID, boots this user from that group.
+     * @param {string} projectID
+     */
+    async removeUserFromProject(projectID) {
+        const docs = await firebase
+            .firestore()
+            .collection(MATCHES)
+            .where("projectID", "==", projectID)
+            .where("userID", "==", this.auth.currentUser.uid)
+            .get();
+        docs.forEach(d => d.ref.delete());
     }
 }
 
