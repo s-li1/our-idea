@@ -7,6 +7,7 @@ import CreateAccountPage from './pages/CreateAccount/CreateAccountPage';
 import CreateProjectPage from './pages/CreateProject/CreateProjectPage';
 import LoginPage from './pages/Login/LoginPage';
 import HomePage from './pages/Home/HomePage';
+import ProjectListPage from './pages/ProjectList/ProjectListPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path={ROUTES.CREATE_ACCOUNT} component={CreateAccountPage}/>
         <Route path={ROUTES.CREATE_PROJECT} component={CreateProjectPage}/>
         <Route path={ROUTES.LOGIN} component={LoginPage}/>
+        <Route path={ROUTES.PROJECTS} component={ProjectListPage}/>
         <Route path={ROUTES.HOME} component={HomePage}/>
       </Switch>
     </Router>

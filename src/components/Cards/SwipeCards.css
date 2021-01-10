@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 
-* {
+.SwipeCards {
   font-family: 'Red Hat Text', sans-serif;
-  font-family: Red Hat Text;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  /* color: #505050; */
 }
 
 .buttons {
@@ -46,7 +44,6 @@
 
 .swipe-card-text {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     padding: 10px;
 }
