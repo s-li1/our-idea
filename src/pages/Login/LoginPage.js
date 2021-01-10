@@ -3,7 +3,7 @@ import LoginForm from './LoginForm';
 import { FirebaseContext } from '../../components/Firebase';
 import './Login.css';
 import { CgHello } from 'react-icons/cg';
-import GoBack from '../../components/GoBack/GoBack';
+import GoBack from '../../components/Buttons/GoBack/GoBack';
 import * as ROUTES from '../../constants/routes';
 import './Login.css';
 export default function LoginPage() {
