@@ -6,7 +6,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import CloseIcon from '@material-ui/icons/Close';
 
 import './SwipeCards.css';
-// import AppClient from '../AppClient/AppClient';
+import Members from '../../Buttons/Members/Members';
 
 const alreadyRemoved = [];
 
@@ -46,6 +46,7 @@ export default function SwipeCards(props) {
                                             preventSwipe={['up', 'down']}
                                             key={proj.id}>
                                         <div className='swipe-card'>
+                                            <div className="swipe-card-members"><Members proj={proj} locked={true}/></div>
                                             <img className="swipe-card-thumbnail" src={proj.img} alt=""></img>
                                             <div className="swipe-card-name">
                                                 {proj.name}

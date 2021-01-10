@@ -17,7 +17,7 @@ export default function LandingPage() {
                         Create an Account
                     </button>
                 </Link>
-            <p>Already have an account? <Link to={ROUTES.LOGIN}>Log In</Link></p>
+                <p>Already have an account? <Link to={ROUTES.LOGIN}>Log In</Link></p>
             </div>
         </div>
     )       

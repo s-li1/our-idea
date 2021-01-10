@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import ProjectCard from '../../components/Cards/ProjectCard';
+import ProjectCard from '../../components/Cards/ProjectCard/ProjectCard';
 import firebase from "firebase/app";
 
 import './ProjectList.css';

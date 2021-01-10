@@ -1,14 +1,19 @@
 import React from 'react';
 
-import './SwipeCards.css';
+import './../SwipeCard/SwipeCards.css';
 import './ProjectCard.css';
 
 import { MdForum } from 'react-icons/md'
 import { useHistory } from 'react-router-dom';
-import { PROJECT_CHAT } from '../../constants/routes';
+import { PROJECT_CHAT } from '../../../constants/routes';
 import { IconButton } from '@material-ui/core';
-import LeaveProject from '../Buttons/LeaveProject/LeaveProject';
+import LeaveProject from '../../Buttons/LeaveProject/LeaveProject';
+import Members from '../../Buttons/Members/Members';
 
+/**
+ * 
+ * @param {{proj: Project}} param0 
+ */
 export default function ProjectCard({ proj }) {
     const history = useHistory();
 
@@ -19,6 +24,7 @@ export default function ProjectCard({ proj }) {
 
     return (
         <div className="project-card">
+            <div className="swipe-card-members"><Members proj={proj} locked={false}/></div>
             <p className="project-card-title">{proj.name}</p>
             <div className="project-card-desc">
             {proj.description}

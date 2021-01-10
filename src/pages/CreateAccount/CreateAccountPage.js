@@ -15,12 +15,9 @@ export default function CreateAccountPage() {
                     <BsFillPersonFill size={40} className="icon"/>
                     <h1 className="header">Create Profile</h1>
                 </div>
-                <p>Create your free account today and start matching with like-minded individuals that want to do the same projects.</p>
+                <p className="header-body">Create your free account today and start matching with like-minded individuals that want to do the same projects.</p>
             </div>
-                <FirebaseContext.Consumer>
-                    {firebase => <CreateForm firebase={firebase}/>}
-                </FirebaseContext.Consumer> 
-           
+                <CreateForm />
         </div>
     )
 }

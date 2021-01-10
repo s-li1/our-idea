@@ -17,6 +17,7 @@ export default function CreateForm() {
     const initialFormState = {
         username:'',
         email:'',
+        github: '',
         password:'',
         confirmPassword:'',
         error: null
@@ -39,7 +40,8 @@ export default function CreateForm() {
         try {
             setState(STATES.LOADING);
             await firebase.createAccount(form.email, form.password, {
-                name: form.username
+                name: form.username,
+                github: form.github
             });
             await firebase.login(form.email, form.password);
             setSession(await firebase.getUser(firebase.auth.currentUser.uid));
@@ -67,6 +69,13 @@ export default function CreateForm() {
                 <input
                     name="email"
                     value={form.email}
+                    onChange={handleInputChange}
+                    type="text"
+                />
+                <label className="form-label">Github</label>
+                <input
+                    name="github"
+                    value={form.github}
                     onChange={handleInputChange}
                     type="text"
                 />
