@@ -15,6 +15,7 @@ export default function SwipeCards({ appClient }) {
     const [ projects, setProjects ] = useState([]);
     const userID = appClient.auth.currentUser.uid;
 
+    // TODO: component something outside of component...
     useEffect(() => {
         async function fetchData() {
             const myProjs = await appClient.getMyProjects();
@@ -47,7 +48,7 @@ export default function SwipeCards({ appClient }) {
         alreadyRemoved.push(projID);
         setTopCardIndex(topCardIndex - 1);
 
-        // await appClient.swipeProject(projID, direction);
+        // await appClient.swipeProject(projID, direction); - TODO: uncomment and check that the project list page updates
     }
 
     const swipe = (dir) => {
@@ -81,6 +82,7 @@ export default function SwipeCards({ appClient }) {
                                         </TinderCard>)}
                 {(projects.length === 0) ? <div id="no-projs-msg">No projects were found.</div> : null}
             </div>
+            {/* TODO: buttons don't swipe anymore */}
             <div className="buttons">
                 <IconButton onClick={() => swipe('left')}>
                     <CloseIcon style={{ fontSize: 70, color: "#E86767" }}/>
