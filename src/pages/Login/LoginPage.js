@@ -5,7 +5,6 @@ import { FirebaseContext } from '../../components/Firebase';
 export default function LoginPage() {
     return (
         <div>
-            <Navigation/>
             <h1>Login</h1>
             <FirebaseContext.Consumer>
                 {firebase => <LoginForm firebase={firebase}/>}
