@@ -26,3 +26,5 @@ class ChatAppClient extends BasicAppClient {
             .orderBy('timestamp');
     }
 }
+
+export default ChatAppClient;
