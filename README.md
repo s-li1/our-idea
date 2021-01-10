@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Inspiration
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+There's so many fantastic project ideas out there, yet it's always difficult to find and connect with people who share your enthusiasm and interest in bringing your idea to life. We've all had times where we wanted to find the perfect people to work with and drawing inspiration from speed matching apps like Tinder, Our Idea came along.
 
-## Available Scripts
+## What is OurIdea?
 
-In the project directory, you can run:
+Our Idea allows users to "swipe left" or "swipe right" on innovative ideas submitted by other users. You can match with teams, chat with them in real-time immediately on your 💯ideas, and create connections for life!
 
-### `npm start`
+### How we built it
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+We prototyped everything in Figma first! Always 🤠
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+We played around with React and Material UI on the front-end and agonized over pure CSS.
 
-### `npm test`
+We also employed the swiss army knife of hackathons–🔥Firebase 🔥–and its multiple functionalities (Firestore!)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Challenges we ran into
 
-### `npm run build`
+As it was our first time using Firebase, we had a lot of fun with it. However, it also brought a few problems! Just mere hours before submission, we reached our usage limit and it was a race to finish.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Accomplishments that we're proud of
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Our Idea is a labor of love and we learned so much doing it. There were a lot of tired Discord calls, LiveShare trouble, moments of panicked silence and muted mics, but we're so proud of the project and its potential to connect individuals on the basis of good ideas–just like this hackathon has!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### What's next for Our Idea
+Filtering on ideas!
+Superlikes??? 👀
