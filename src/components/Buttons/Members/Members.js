@@ -8,7 +8,6 @@ import './Members.css';
 /** @param {{proj: Project, locked: boolean}} param0 */
 function Members({ proj, locked }) {
     const [open, setOpen] = useState(false);
-
     return ( 
         <>
             <div>
