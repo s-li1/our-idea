@@ -10,14 +10,13 @@ export default function ProjectCard({ proj }) {
         <div className="project-card">
             <p className="project-card-title">{proj.name}</p>
             <div className="project-card-desc">
-            {proj.desc}
+            {proj.description}
             </div>
             <div className="container">
                 <div className="btn-holder">
                     <MdForum className="goto-chat-btn" onClick={() => console.log(`sending user to chat for project ${proj.id}`)}/>
                 </div>
             </div>
-            {/* <button className="goto-chat-btn">hi</button> */}
         </div>
     )
 }

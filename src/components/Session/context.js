@@ -1,5 +1,6 @@
 import React from 'react';
 
-const AuthorizationUserContext = React.createContext(null);
+/** @type {React.Context<Session>} */
+const SessionContext = React.createContext(null);
 
-export default AuthorizationUserContext;
+export default SessionContext;

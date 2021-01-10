@@ -32,7 +32,11 @@
 .goto-chat-btn {
     color: #8FB8ED;
     font-size: 30px;
-    margin-bottom: 10vh;
+}
+
+.goto-chat-btn:hover {
+    cursor: pointer;
+    color: #5765e2;
 }
 
 .container {

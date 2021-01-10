@@ -1,5 +1,5 @@
 export const LANDING = "/";
-export const CREATE_ACCOUNT = "/create-account";
+export const CREATE_ACCOUNT = "/signup";
 export const LOGIN = "/login";
 export const HOME = '/home';
 export const PROJECTS = '/projects';

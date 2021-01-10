@@ -1,3 +1,4 @@
-import AuthorizationUserContext from './context';
+import SessionContext from './context';
 
-export { AuthorizationUserContext };
+export { SessionContext };
+
