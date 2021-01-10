@@ -28,6 +28,7 @@
     display: flex;
     justify-content: center;
     color: #505050;
+    padding-top: 100px;
 }
 
 .swipe-card {
