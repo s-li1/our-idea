@@ -1,19 +1,43 @@
 import {RIGHT} from "../constants/swipeActions";
 import {USERS, PROJECTS, MATCHES} from "../constants/collections";
 import firebase from "firebase/app";
+import {v1 as uuidv1} from 'uuid';
 
 class AppClient {
+
+    /**
+     * A timestamp unique to this user (used for tie breaks)
+     * @returns {string}
+     */
+    createUIDTimestamp = () => `${new Date().getTime().toString().padEnd(10, "0")}_${firebase.auth().currentUser.uid}`;
+
     /**
      * Given project data, creates a project in the DB and returns the project ID.
      * @param {Project} project
      * @returns {Promise<string>} 
      */
     async createProject(project) {
-        return firebase
+        const uuid = uuidv1();
+        await firebase
             .firestore()
             .collection(PROJECTS)
-            .add(project)
-            .then(qs => qs.id);
+            .doc(uuid)
+            .set({
+                ...project, 
+                projectID: uuidv1(),
+                timestamp: this.createUIDTimestamp()
+            });
+
+        /** @type {Match} */
+        const match = { userID: firebase.auth().currentUser.uid, projectID: uuid };
+
+        // Add the person direct to this project as a match
+        await firebase
+            .firestore()
+            .collection(MATCHES)
+            .add(match);
+
+        return uuid;
     }
 
     /**
@@ -22,6 +46,8 @@ class AppClient {
      */
     async viewProjects() {
         const uid = firebase.auth().currentUser.uid;
+
+        // Find all the matches
         const projectIDs = await firebase
             .firestore()
             .collection(MATCHES)
@@ -31,6 +57,7 @@ class AppClient {
                 (/** @type {Match} */ (d.data())).projectID)
             );
 
+        // Using the IDS, finally grab the project data
         return firebase
             .firestore()
             .collection(PROJECTS)
@@ -39,6 +66,20 @@ class AppClient {
             .then(qs => qs.docs.map(d => 
                 /** @type {Project} */ (d.data()))
             );
+    }
+
+    /**
+     * 
+     * @param {string} projectID 
+     * @returns {Promise<Project>}
+     */
+    async getProject(projectID) {
+        return firebase
+            .firestore()
+            .collection(PROJECTS)
+            .where("projectID", "==", projectID)
+            .get()
+            .then(res => /** @type {Project} */ (res.docs[0].data()));
     }
 
     /**
@@ -55,11 +96,16 @@ class AppClient {
             .then(d => 
                 /** @type {User} */ d.data()
             );
+        
+        // Grab all the projects we're currently in to avoid them
+        const currentProjects = (await this.viewProjects()).map(p => p.projectID);
 
+        // Finally, grab the next project to shows
         return firebase
             .firestore()
             .collection(PROJECTS)
-            .where("projectID", ">", user.lastProjectID)
+            .where("timestamp", ">", user.lastProjectTimestamp)
+            .where("projectID", "not-in", currentProjects)
             .orderBy("projectID")
             .get()
             .then(qs => 
@@ -90,14 +136,15 @@ class AppClient {
                 .add(match);
         }
 
-        // Increment the user project ID (do we have to do that in a transaction?)
+        // Grab the given project so we can grab the timestamp
+        const project = await this.getProject(projectID);
+
+        // Set our last swiped timestamp
         await firebase
             .firestore()
             .collection(USERS)
             .doc(uid)
-            .update({
-                lastProjectID: projectID
-            });
+            .update({ lastProjectTimestamp: project.timestamp });
     }
 
     /**
