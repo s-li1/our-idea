@@ -14,7 +14,7 @@ import {IconButton} from '@material-ui/core';
 export default function Navbar () {
     return (
         <div className="navbar">
-            <Link to={ROUTES.CREATE_PROJECT}> 
+            <Link to={ROUTES.PROJECT_CREATE}> 
                 <IconButton>
                     <MdAddCircle className="navbar__icon" />
                 </IconButton>
