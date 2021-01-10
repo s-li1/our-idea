@@ -11,10 +11,12 @@
 .buttons {
     width: 100%;
     display: flex;
-    position: fixed;
-    bottom: 10vh;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute; 
+    bottom: 70px; 
 }
+
 
 .swipe {
     /* needed to stack the cards */
@@ -39,26 +41,34 @@
 .swipe-card {
     position: relative;
     display: block;
-    width: 50%;
-    width: 70vw;
-    max-width: 70vw;
-    height: 50vh;
-    max-height: 50vh;
-    background: #CCD7FF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    overflow: hidden;
     overflow-y: auto;
+    box-shadow: 0px 8px 36px rgba(0, 0, 0, 0.16);
+    border-radius: 16px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+}
+
+.swipe-card::-webkit-scrollbar {
+    display: none;
 }
 
 .swipe-card-text {
     display: flex;
     align-items: center;
     padding: 10px;
+    color: #505050;
 }
 
 .swipe-card-name {
     font-weight: 500;
     font-size: 30px;
     padding: 10px;
+    color: #505050;
 }
 
 .swipe-card-thumbnail {
@@ -70,6 +80,3 @@
     max-width: 25vh;
 }
 
-#btn-padding {
-    width: 30vw;
-}

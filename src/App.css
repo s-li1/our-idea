@@ -1,6 +1,4 @@
 :root {
-  --purple: #C2BBF0;
-  --purple-blue: #8FB8ED;
   --background: white;
   --main-button-color: #4220B5;
 }
@@ -16,6 +14,7 @@ html {
 
 .screen-container {
   min-height: 90vh;
+  max-height: 90vh;
   width: 400px;
   position: relative;
   bottom: -50px;

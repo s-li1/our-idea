@@ -8,8 +8,7 @@ import MessageBar from '../../components/MessageBar/MessageBar';
 import Message from '../../components/Message/Message';
 import firebase from "firebase/app";
 import { MESSAGES } from "../../constants/collections";
-
-
+import './ChatPage.css'
 export default function ChatPage({appClient}) {
     const client = useContext(FirebaseContext);
     const dummy = useRef();
@@ -20,11 +19,13 @@ export default function ChatPage({appClient}) {
 
     useEffect(() => {
         const unsubscribe = firebase
-        .firestore()
-        .collection(MESSAGES)
-        .where('projectID', '==', id).orderBy('timestamp').onSnapshot((snapshot) => {
-          setMessages(snapshot.docs.map((doc) => doc.data()));
-        });
+            .firestore()
+            .collection(MESSAGES)
+            .where('projectID', '==', id)
+            .orderBy('timestamp')
+            .onSnapshot((snapshot) => {
+            setMessages(snapshot.docs.map((doc) => doc.data()));
+            });
     
         return () => {
           // This is cleanup...
@@ -37,12 +38,13 @@ export default function ChatPage({appClient}) {
     
 
     return (
-        <div>
+        <div className="screen-container">
             <Navbar />
-            <div>
+            <div className="messages-container">
                 {messages && messages.map((m, i) => <Message key={m.timestamp} message={m}/>)}
-                <MessageBar projectID={id}/>
             </div>
+                <MessageBar projectID={id}/>
         </div>
+       
     )
 }
