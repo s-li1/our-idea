@@ -91,6 +91,7 @@ button:focus {
 
 .error {
   text-align: center;
+
   padding: 0 20px;
 }
 
@@ -102,4 +103,18 @@ a:visited, a:hover, a:active {
   position: fixed; /* or absolute */
   top: 40%;
   left: 48.5%;
+}
+
+
+
+.switch-wrapper {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
+.switch-wrapper > div {
+  position: absolute;
 }

@@ -84,10 +84,8 @@ export default function CreateForm() {
                     onChange={handleInputChange}
                     type="password"
                 />
-                <div className="create">
-                    <button className="arrow" type="submit" onClick={handleSubmit}><AiOutlineArrowRight className="arrow-icon"/></button>
-                    {form.error && <p className="error">{form.error.message}</p>}
-                </div>
+               <button className="arrow" type="submit"><AiOutlineArrowRight className="arrow-icon"/></button>
+                {form.error && <p className="error">{form.error.message}</p>}
             </form>}
         </div>
     )
