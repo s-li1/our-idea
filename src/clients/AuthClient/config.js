@@ -1,10 +1,11 @@
 const config = {
-    apiKey: "AIzaSyA7VIbHsjlehtxFdpSx1j8YlZ8Zw0IpJ9k",
-    authDomain: "our-idea-36e9e.firebaseapp.com",
-    projectId: "our-idea-36e9e",
-    storageBucket: "our-idea-36e9e.appspot.com",
-    messagingSenderId: "892786202897",
-    appId: "1:892786202897:web:a3216d06c6f002fc5ed4b0"
+  apiKey: "AIzaSyBsY0aUW7lhhi9eWrEozjckOFylXxACvV4",
+  authDomain: "nwhacks-2021-72eac.firebaseapp.com",
+  projectId: "nwhacks-2021-72eac",
+  storageBucket: "nwhacks-2021-72eac.appspot.com",
+  messagingSenderId: "35413664112",
+  appId: "1:35413664112:web:db0654dd74a23d96cf6fb5",
+  measurementId: "G-HRQ2FH9CHT"
 };
 
 export default config;

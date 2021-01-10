@@ -44,29 +44,26 @@ export default function SwipeCards({ appClient }) {
     const childRefs = useMemo(() => Array(projects.length).fill(0).map(i => React.createRef()), [projects]);
 
     const onSwipe = async (projID, direction) => {
-        console.log(`You swiped ${direction} on ${projID}`);
         alreadyRemoved.push(projID);
         setTopCardIndex(topCardIndex - 1);
-
-        // await appClient.swipeProject(projID, direction); - TODO: uncomment and check that the project list page updates
+        await appClient.swipeProject(projID, direction); // TODO: check that the project list page updates
     }
 
     const swipe = (dir) => {
-        console.log("reached swipe");
+        console.log(`You hit the ${dir} button on ${topCardIndex}`);
         if (alreadyRemoved.length === projects.length || projects.length === 0) return;
-        console.log(topCardIndex);
-        console.log(childRefs[topCardIndex]);
-        childRefs[topCardIndex].current.swipe(dir) // Swipe the card!
+
+        // TinderCard.swipe calls onSwipe handler
+        childRefs[topCardIndex].current.swipe(dir); // Swipe the card!
     }
 
     return (
         <div className="cards SwipeCards">
-
             <div id="swipe-cards-container">
                 {projects.map((proj, i) =>  <TinderCard
                                             ref={childRefs[i]} 
                                             className='swipe'
-                                            onSwipe={(directionSwiped) => onSwipe(proj.id, directionSwiped)}
+                                            onSwipe={(directionSwiped) => onSwipe(proj.projectID, directionSwiped)}
                                             flickOnSwipe={true}
                                             preventSwipe={['up', 'down']}
                                             key={proj.projectID}>
@@ -76,13 +73,12 @@ export default function SwipeCards({ appClient }) {
                                                 {proj.name}
                                             </div>
                                             <div className="swipe-card-text">
-                                                <p>{proj.desc}</p>
+                                                <p>{proj.description}</p>
                                             </div>
                                         </div>
                                         </TinderCard>)}
                 {(projects.length === 0) ? <div id="no-projs-msg">No projects were found.</div> : null}
             </div>
-            {/* TODO: buttons don't swipe anymore */}
             <div className="buttons">
                 <IconButton onClick={() => swipe('left')}>
                     <CloseIcon style={{ fontSize: 40, color: "#E86767" }}/>
