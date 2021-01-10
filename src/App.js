@@ -7,6 +7,7 @@ import CreateAccountPage from './pages/CreateAccount/CreateAccountPage';
 import CreateProjectPage from './pages/CreateProject/CreateProjectPage';
 import LoginPage from './pages/Login/LoginPage';
 import HomePage from './pages/Home/HomePage';
+import ProjectListPage from './pages/ProjectList/ProjectListPage';
 import ChatPage from './pages/Chat/ChatPage';
 import { useContext, useState } from 'react';
 import { FirebaseContext } from './components/Firebase';
@@ -18,10 +19,11 @@ function App() {
     <SessionContext.Provider value={{session, setSession}}>
       <Router>
         <Switch>
+          <Route exact path={ROUTES.LANDING} component={LandingPage}/>
+          <AuthenticatedRoute exact path={ROUTES.PROJECTS} component={ProjectListPage}/>
           <AuthenticatedRoute path={ROUTES.PROJECT_CREATE} component={CreateProjectPage}/>
           <AuthenticatedRoute path={ROUTES.PROJECT_CHAT} component={ChatPage}/>
           <AuthenticatedRoute path={ROUTES.HOME} component={HomePage}/>
-          <Route exact path={ROUTES.LANDING} component={LandingPage}/>
           <Route path={ROUTES.LOGIN} component={LoginPage}/>
           <Route path={ROUTES.CREATE_ACCOUNT} component={CreateAccountPage}/>
           <Redirect to={ROUTES.HOME}/>
