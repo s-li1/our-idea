@@ -58,11 +58,11 @@ export default function SwipeCards(props) {
             </div>
             <div className="buttons">
                 <IconButton onClick={() => swipe('left')}>
-                    <CloseIcon style={{ fontSize: 70, color: "#E86767" }}/>
+                    <CloseIcon style={{ fontSize: 40, color: "#E86767" }}/>
                 </IconButton>
                 <div id="btn-padding"></div>
                 <IconButton className="right-btn" onClick={() => swipe('right')}>
-                    <DoneIcon className="right-btn" style={{ fontSize: 70, color: "#A7D5B1" }} />
+                    <DoneIcon className="right-btn" style={{ fontSize: 40, color: "#A7D5B1" }} />
                 </IconButton>
             </div>
         </div>

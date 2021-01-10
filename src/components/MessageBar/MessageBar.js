@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 
 import { MdSend, MdError } from 'react-icons/md'
-import { Tooltip, IconButton, Box } from '@material-ui/core';
+import { Tooltip, IconButton } from '@material-ui/core';
 
 import './MessageBar.css';
 import { FirebaseContext } from '../Firebase';
@@ -30,7 +30,7 @@ function MessageBar({projectID}) {
     const handleChange = ({target: { value }}) => setForm(f => ({...f, text: value || ""}));
 
     return (
-        <Box justifyContent="center" display="flex">
+        <div class="message-bar">
             <input
                 value={form.text}
                 placeholder="..."
@@ -39,7 +39,7 @@ function MessageBar({projectID}) {
                 className="message-bar-text"
             />
             {form.error ? <MessageErrorButton error={form.error} onClick={handleSubmit}/> : < MessageSendButton onClick={handleSubmit} />}
-        </Box>
+        </div>
     );
 }
 

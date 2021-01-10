@@ -27,11 +27,10 @@ export default function ProjectList({appClient}) {
       }, []);
 
     return (
-        <div>
+        <div className="project-list">
             <h1 className="heading">Projects</h1>
-            <div className="project-list">
-                {projects.map((proj, i) => <ProjectCard key={proj.projectID} proj={proj}/>)}
-            </div>
+            {projects.map((proj, i) => <ProjectCard key={proj.projectID} proj={proj}/>)}
+            
         </div>
     )
 }

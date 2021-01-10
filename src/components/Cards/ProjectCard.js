@@ -28,6 +28,7 @@ export default function ProjectCard({ proj }) {
                     <IconButton onClick={handleChatClick} className="goto-chat-btn">
                         <MdForum />
                     </IconButton>
+                    <div className="button-padding"></div>
                     <LeaveProject className="goto-chat-btn" projectID={proj.projectID}/>
                 </div>
             </div>

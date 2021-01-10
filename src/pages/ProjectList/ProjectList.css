@@ -1,5 +1,15 @@
 .project-list {
+    height: 76vh;
+    width: 400px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
+
+.project-list::-webkit-scrollbar {
+    display: none;
+}
+
 
 .heading {
     display: flex;

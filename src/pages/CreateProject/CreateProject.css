@@ -16,15 +16,32 @@
     padding: 20px;
     font-size: 1.2rem;
     margin: 0px;
+    font-weight: 600;
 }
 
 .form-input {
     width: 208px;
     height: 97px;
     word-break: break-word;
+    border-radius: 5px;
+    border-width: 2px;
+    background-color: white;
+    resize: none;
+    color: black;
+    padding: 20px;
+    width: 80%;
+    border-color: #F3F4F6;
+    border-style:solid;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
 }
 
-.createProject {
-    width: 179px;
-    height: 49px;
+.form-input:focus {
+    outline: none;
+    border-color: #5024e0;
+    background-color: rgba(	217, 187, 249, 0.2);
 }
+
