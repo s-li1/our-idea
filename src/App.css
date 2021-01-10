@@ -1,6 +1,7 @@
 :root {
   --background: white;
   --main-button-color: #4220B5;
+  --error-color: #ff5858;
 }
 .App {
   text-align: center;
@@ -55,7 +56,7 @@ input {
   border-radius: 5px;
   background-color: white;
   color: black;
-  padding: 20px;
+  padding: 15px;
   width: 80%;
   border-color: #F3F4F6;
   border-style:solid;
@@ -91,6 +92,7 @@ button:focus {
 
 .error {
   text-align: center;
+
   padding: 0 20px;
 }
 
@@ -102,4 +104,22 @@ a:visited, a:hover, a:active {
   position: fixed; /* or absolute */
   top: 40%;
   left: 48.5%;
+}
+
+
+
+.switch-wrapper {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+}
+
+.switch-wrapper > div {
+  position: absolute;
+}
+
+.lightbulb-logo {
+  color: #4220B5;
 }

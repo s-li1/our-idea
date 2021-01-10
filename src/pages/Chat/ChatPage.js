@@ -32,10 +32,6 @@ export default function ChatPage({appClient}) {
           unsubscribe();
         };
       }, []);
-      
-    // @ts-ignore
-    console.log(messages);
-    
 
     return (
         <div className="screen-container">
