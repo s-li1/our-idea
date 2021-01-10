@@ -1,14 +1,14 @@
-import { LEFT, RIGHT } from '../../constants/swipeActions';
-import AppClient from './AppClient';
+import { RIGHT } from '../../constants/swipeActions';
+import BasicAppClient from './BasicAppClient';
 
 require('dotenv').config();
 
 describe('it should run', () => {
-    /** @type {AppClient} */
+    /** @type {BasicAppClient} */
     let client;
 
     beforeAll(async () => {
-        client = new AppClient();
+        client = new BasicAppClient();
         await client.login(process.env.TEST_EMAIL, process.env.TEST_PASS);
     });
 

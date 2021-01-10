@@ -3,9 +3,13 @@ import {USERS, PROJECTS, MATCHES} from "../../constants/collections";
 import firebase from "firebase/app";
 
 import {v1 as uuidv1} from 'uuid';
-import Firebase from "../Firebase/Firebase";
+import AuthClient from "../AuthClient/AuthClient";
 
-class AppClient extends Firebase {
+import '../../types/Match';
+import '../../types/User';
+import '../../types/Project';
+
+class BasicAppClient extends AuthClient {
 
     /**
      * A timestamp unique to this user (used for tie breaks)
@@ -173,4 +177,4 @@ class AppClient extends Firebase {
     }
 }
 
-export default AppClient;
+export default BasicAppClient;
