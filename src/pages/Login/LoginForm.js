@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
+export default function LoginForm({firebase}) {
 
-export default function CreateForm({firebase}) {
+    const history = useHistory();
 
     const initialFormState = {
-        username:'',
-        email:'',
-        password:'',
-        confirmPassword:'',
+        email: '',
+        password: '',
         error: null
     }
 
@@ -20,11 +21,11 @@ export default function CreateForm({firebase}) {
           }));
     }
 
-
     const handleSubmit = (event) => {
-        firebase.createAccount(form.email, form.password)
+        firebase.login(form.email, form.password)
         .then(authUser => {
             setForm(initialFormState);
+            history.push(ROUTES.HOME);
         })
         .catch(error=> {
             setForm({error});
@@ -36,13 +37,6 @@ export default function CreateForm({firebase}) {
     return (
         <div>
             <form onSubmit ={handleSubmit}>
-                <input
-                    name="username"
-                    value={form.username}
-                    onChange={handleInputChange}
-                    type="text"
-                    placeholder="Full Name"
-                />
                 <input
                     name="email"
                     value={form.email}
@@ -57,14 +51,7 @@ export default function CreateForm({firebase}) {
                     type="password"
                     placeholder="Password"
                 />
-                 <input
-                    name="confirmPassword"
-                    value={form.confirmPassword}
-                    onChange={handleInputChange}
-                    type="password"
-                    placeholder="Confirm Password"
-                />
-                <button type="submit">Create Account</button>
+                <button type="submit">Sign In</button>
                 {form.error && <p>{form.error.message}</p>}
             </form>
         </div>
