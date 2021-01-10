@@ -3,6 +3,11 @@ import firebase from "firebase/app";
 import { MESSAGES } from "../../constants/collections";
 
 class ChatAppClient extends BasicAppClient {
+    /**
+     * 
+     * @param {string} projectID 
+     * @param {string} text 
+     */
     async sendMessage(projectID, text) {
         /** @type {import("../../types/Message").Message} */
         const message = {
@@ -18,6 +23,10 @@ class ChatAppClient extends BasicAppClient {
             .add(message);
     }
 
+    /**
+     * 
+     * @param {string} projectID 
+     */
     getMessagesQuery(projectID) {
         return firebase
             .firestore()

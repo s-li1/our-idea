@@ -16,7 +16,7 @@ import { FirebaseContext } from '../Firebase';
 export default function Navbar () {
     return (
         <div className="navbar">
-            <Link to={ROUTES.CREATE_PROJECT}> 
+            <Link to={ROUTES.PROJECT_CREATE}> 
                 <IconButton>
                     <MdAddCircle className="navbar__icon" />
                 </IconButton>

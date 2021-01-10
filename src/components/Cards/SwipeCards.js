@@ -6,6 +6,8 @@ import DoneIcon from '@material-ui/icons/Done';
 import CloseIcon from '@material-ui/icons/Close';
 
 import './SwipeCards.css';
+// import AppClient from '../AppClient/AppClient';
+
 const alreadyRemoved = [];
 
 export default function SwipeCards(props) {
