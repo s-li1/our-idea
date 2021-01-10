@@ -33,7 +33,7 @@ export default function Navbar () {
                     <MdViewModule className="navbar__icon"/>
                 </IconButton>
             </Link>
-            
+
             <FirebaseContext.Consumer>
                 {firebase => <SignOut firebase={firebase}/>}
             </FirebaseContext.Consumer> 
