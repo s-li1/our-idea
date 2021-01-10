@@ -1,0 +1,16 @@
+.modal {
+    width: 100%;
+    display: 'flex';
+    align-items: 'center';
+    justify-content: 'center';
+    padding-top: 100px !important;
+    margin-bottom: 200px;
+    height: 90vh;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.modal::-webkit-scrollbar {
+    display: none;
+}

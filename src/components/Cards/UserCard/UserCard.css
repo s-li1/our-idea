@@ -1,0 +1,7 @@
+.user-card {
+    
+}
+
+.user-card::-webkit-scrollbar {
+    display: none;
+}
