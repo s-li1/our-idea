@@ -80,13 +80,3 @@
     max-width: 25vh;
 }
 
-.swipe-card-members {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 20px;
-    color: black;
-    font-size: 0.75rem;
-    opacity: 75%;
-}
-
