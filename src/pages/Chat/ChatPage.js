@@ -3,7 +3,8 @@ import Navbar from '../../components/Navbar/Navbar'
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { FirebaseContext } from '../../components/Firebase';
 import { useParams } from 'react-router-dom';
-import { Message, MessageBar } from '../../components/Message';
+import MessageBar from '../../components/Message/MessageBar';
+import Message from '../../components/Message/Message';
 
 export default function ChatPage() {
     const client = useContext(FirebaseContext);
@@ -15,7 +16,7 @@ export default function ChatPage() {
                 <Navbar />
                 <div>
                     <div>
-                        {messages.map((m, i) => <Message key={i} message={m}/>)}
+                        {messages.map((m, i) => <Message key={i} message={m} name="TODO"/>)}
                     </div>
                     <MessageBar />
                 </div>

@@ -1,4 +1,5 @@
-import { FirebaseContext } from './Firebase';
+import React, { useContext } from 'react';
+import { FirebaseContext } from './../Firebase';
 
 function MessageBar() {
     const client = useContext(FirebaseContext);
