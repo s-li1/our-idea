@@ -16,7 +16,6 @@ describe('it should run', () => {
     it('retrieves a project', async () => {
         const pid = "test";
         const project = await client.getProject(pid);
-        console.log(project);
         expect(project.projectID).toEqual(pid);
     });
 
@@ -31,4 +30,37 @@ describe('it should run', () => {
         const user = await client.getUser(uid);
         expect(user.userID).toEqual(uid);
     });
+
+    it('can query a project', async () => {
+        const pid = "test";
+        const project = await client.getProject(pid);
+        expect(project.projectID).toEqual(pid);
+    });
+
+    it('can retrieve all projects this user is a part of', async () => {
+        const pid = "test";
+        const projects = await client.getMyProjects();
+        expect(projects[0].projectID).toEqual(pid);
+    });
+
+    it('can create and then remove a user from a project', async () => {
+        const project = {
+            name: "MyProject",
+            description: "Another test project",
+            maxMembers: 4
+        };
+        const pid = await client.createProject(project);
+        const projectIds = await (await client.getMyProjects()).map(p => p.projectID);
+
+        await client.removeUserFromProject(pid);
+        const postProjectIds = await (await client.getMyProjects()).map(p => p.projectID);
+
+        expect(projectIds).toContain(pid);
+        expect(postProjectIds).not.toContain(pid);
+    });
+
+    it('can swipe a project right', async () => {
+        const pid = "test2";
+
+    })
 })
