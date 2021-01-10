@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+.SwipeCards {
+  font-family: 'Red Hat Text', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute; 
+    bottom: 70px; 
+}
+
+
+.swipe {
+    /* needed to stack the cards */
+    position: absolute; 
+}
+
+#no-projs-msg {
+    padding: 50px;
+    text-align: center;
+    font-size: 40px;
+    line-height: 40px;
+}
+
+#swipe-cards-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #505050;
+    padding-top: 100px;
+}
+
+.swipe-card {
+    position: relative;
+    display: block;
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    overflow: hidden;
+    overflow-y: auto;
+    box-shadow: 0px 8px 36px rgba(0, 0, 0, 0.16);
+    border-radius: 16px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+}
+
+.swipe-card::-webkit-scrollbar {
+    display: none;
+}
+
+.swipe-card-text {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #505050;
+}
+
+.swipe-card-name {
+    font-weight: 500;
+    font-size: 30px;
+    padding: 10px;
+    color: #505050;
+}
+
+.swipe-card-thumbnail {
+    padding-top: 20px;
+    display: block;
+    margin: 0 auto;
+    height: auto;
+    width: auto;
+    max-width: 25vh;
+}
+
