@@ -6,7 +6,7 @@ import { FirebaseContext } from '../../components/Firebase';
 
 export default function ProjectListPage() {
     return (
-        <div>
+        <div className="screen-container">
             <Navbar/>
             <FirebaseContext.Consumer>
                 {BasicAppClient => <ProjectList appClient={BasicAppClient}/>}

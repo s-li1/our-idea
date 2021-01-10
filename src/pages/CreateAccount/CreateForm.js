@@ -86,7 +86,7 @@ export default function CreateForm() {
                 />
                 <div className="create">
                     <button className="arrow" type="submit" onClick={handleSubmit}><AiOutlineArrowRight className="arrow-icon"/></button>
-                    {form.error && <p>{form.error.message}</p>}
+                    {form.error && <p className="error">{form.error.message}</p>}
                 </div>
             </form>}
         </div>

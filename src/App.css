@@ -16,6 +16,7 @@ html {
 
 .screen-container {
   min-height: 90vh;
+  max-height: 90vh;
   width: 400px;
   position: relative;
   bottom: -50px;
