@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-
+import './CreateAccount.css'
 export default function CreateForm({firebase}) {
 
     const initialFormState = {
@@ -35,36 +35,36 @@ export default function CreateForm({firebase}) {
 
     return (
         <div>
-            <form onSubmit ={handleSubmit}>
+            <form onSubmit ={handleSubmit} className="create-account-form">
+                <h1 className="input-header">Name</h1>
                 <input
                     name="username"
                     value={form.username}
                     onChange={handleInputChange}
                     type="text"
-                    placeholder="Full Name"
                 />
+                <h1 className="input-header">Email Address</h1>
                 <input
                     name="email"
                     value={form.email}
                     onChange={handleInputChange}
                     type="text"
-                    placeholder="Email Address"
                 />
+                <h1 className="input-header">Password</h1>
                 <input
                     name="password"
                     value={form.password}
                     onChange={handleInputChange}
                     type="password"
-                    placeholder="Password"
                 />
+                <h1 className="input-header">Confirm Password</h1>
                  <input
                     name="confirmPassword"
                     value={form.confirmPassword}
                     onChange={handleInputChange}
                     type="password"
-                    placeholder="Confirm Password"
                 />
-                <button type="submit">Create Account</button>
+                <button className="create" type="submit">Create Account</button>
                 {form.error && <p>{form.error.message}</p>}
             </form>
         </div>

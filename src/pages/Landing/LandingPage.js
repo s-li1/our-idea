@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './LandingPage.css';
 export default function LandingPage() {
     return (
-        <div className="container">
+        <div className="screen-container">
             <div className="page-content">
                 <h1 className="title">Xinder</h1>
                 <div className="logo">

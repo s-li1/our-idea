@@ -1,0 +1,23 @@
+.create-account-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.create {
+    width: 179px;
+    height: 49px;
+}
+
+
+.create-profile-header {
+    padding: 20px 20px 0px 20px;
+}
+
+.input-header {
+    align-self: flex-start;
+    padding: 20px;
+    font-size: 1.2rem;
+    margin: 0px;
+}

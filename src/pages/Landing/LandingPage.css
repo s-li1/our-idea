@@ -19,11 +19,5 @@
 .create-account {
     width: 179px;
     height: 49px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    background-color: var(--main-button-color);
 }
+

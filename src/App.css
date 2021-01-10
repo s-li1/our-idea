@@ -10,7 +10,7 @@ html {
 }
 
 
-.container {
+.screen-container {
   min-height: 80vh;
   width: 400px;
   position: relative;
@@ -21,5 +21,31 @@ html {
   border-radius: 40px;
   color: black;
   background-color: var(--background);
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 20px;
+  background-color: var(--main-button-color);
+}
+
+input {
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  width: 80%;
+  border-color: #F3F4F6;
+  border-style:solid;
+}
+
+
+input:focus, button:focus {
+  outline: none;
 }
 

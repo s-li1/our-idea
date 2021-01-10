@@ -51,7 +51,7 @@ export default function LoginForm({firebase}) {
                     type="password"
                     placeholder="Password"
                 />
-                <button type="submit">Sign In</button>
+                <button className="create" type="submit">Sign In</button>
                 {form.error && <p>{form.error.message}</p>}
             </form>
         </div>
