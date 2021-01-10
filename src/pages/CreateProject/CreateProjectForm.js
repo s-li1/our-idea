@@ -55,7 +55,7 @@ export default function CreateProjectForm ({appClient}) {
                        value={project.description}
                        onChange={handleInputChange}
                        placeholder="Max 200 words..."
-                       maxLength="200"
+                       maxLength={200}
                        type="text"
                        >
                 </input>
