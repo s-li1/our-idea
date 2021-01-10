@@ -31,7 +31,10 @@ class AuthClient {
             })
     };
 
-    login = (email, password) => this.auth.signInWithEmailAndPassword(email, password);
+    login = async (email, password) => {
+        await this.auth.setPersistence(app.auth.Auth.Persistence.LOCAL);
+        await this.auth.signInWithEmailAndPassword(email, password)
+    };
     logoff = () => this.auth.signOut();
     
 }
