@@ -9,4 +9,5 @@
  * 
  * // Are we still doing this in MVP?
  * @property {number} maxMembers
+ * @property {number} [currentMembers]
  */

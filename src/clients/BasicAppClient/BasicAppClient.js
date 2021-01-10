@@ -32,7 +32,8 @@ class BasicAppClient extends AuthClient {
                 ...project, 
                 projectID,
                 timestamp: this.createUIDTimestamp(),
-                createdBy: this.auth.currentUser.uid
+                createdBy: this.auth.currentUser.uid,
+                currentMembers: 1
             });
 
         /** @type {Match} */
@@ -62,8 +63,6 @@ class BasicAppClient extends AuthClient {
             .get()
             .then(qs => qs.docs.map(d => /** @type {Match} */ (d.data())));
         
-        console.log(matches);
-
         return (await Promise.all(matches.map(m => this.getProject(m.projectID))))
             .sort((a, b) => a.timestamp < b.timestamp ? -1 : 1);
     }
@@ -109,7 +108,10 @@ class BasicAppClient extends AuthClient {
             .get()
             .then(qs => qs.docs
                 .map(v => /** @type {Project} */ (v.data()))
-                .filter(p => p.createdBy !== uid && !currentProjects.includes(p.projectID))[0]));
+                .filter(p => p.createdBy !== uid 
+                            && p.currentMembers < p.maxMembers 
+                            && !currentProjects.includes(p.projectID)
+                        )[0]));
     }
 
     /**
@@ -129,10 +131,18 @@ class BasicAppClient extends AuthClient {
                 projectID
             };
 
+            const incrementUpdate = { currentMembers: firebase.firestore.FieldValue.increment(1) };
+
             await firebase
                 .firestore()
                 .collection(MATCHES)
                 .add(match);
+
+            await firebase
+                .firestore()
+                .collection(PROJECTS)
+                .doc(projectID)
+                .update(incrementUpdate);
         }
 
         // Grab the given project so we can grab the timestamp
@@ -167,12 +177,21 @@ class BasicAppClient extends AuthClient {
      * @param {string} projectID
      */
     async removeUserFromProject(projectID) {
+        const decrementUpdate = { currentMembers: firebase.firestore.FieldValue.increment(-1) };
+        
+        await firebase
+                .firestore()
+                .collection(PROJECTS)
+                .doc(projectID)
+                .update(decrementUpdate);
+
         const docs = await firebase
             .firestore()
             .collection(MATCHES)
             .where("projectID", "==", projectID)
             .where("userID", "==", this.auth.currentUser.uid)
             .get();
+
         docs.forEach(d => d.ref.delete());
     }
 }
