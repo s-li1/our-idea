@@ -24,7 +24,6 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     transition: 0.5s
-
 }
 
 .project-card::-webkit-scrollbar {

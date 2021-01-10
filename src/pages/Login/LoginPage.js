@@ -16,7 +16,7 @@ export default function LoginPage() {
                     <h1>Welcome Back!</h1>
                 </div>
                 
-                <p>Sign in to continue</p>
+                <p className="header-body">Sign in to continue</p>
             </div>
             <FirebaseContext.Consumer>
                 {firebase => <LoginForm firebase={firebase}/>}

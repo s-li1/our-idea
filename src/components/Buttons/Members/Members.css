@@ -1,0 +1,11 @@
+.members-btn {
+    max-width: 2.5rem;
+    max-height: 2.5rem;
+}
+
+.members-lock {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1rem;
+}
