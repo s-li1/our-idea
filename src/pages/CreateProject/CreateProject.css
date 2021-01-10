@@ -21,6 +21,7 @@
 .form-input {
     width: 208px;
     height: 97px;
+    word-break: break-word;
 }
 
 .createProject {

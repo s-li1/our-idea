@@ -50,7 +50,7 @@ export default function CreateProjectForm ({appClient}) {
                 </input>
 
                 <h1 className="input-header">Description: </h1>
-                <input name="description"
+                <textarea name="description"
                        className="form-input"
                        value={project.description}
                        onChange={handleInputChange}
@@ -58,7 +58,7 @@ export default function CreateProjectForm ({appClient}) {
                        maxLength={200}
                        type="text"
                        >
-                </input>
+                </textarea>
 
                 <h1 className="input-header">Max # of People: </h1>
                 <input name="maxMembers"
