@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import './CreateAccount.css'
+import { AiOutlineArrowRight } from 'react-icons/ai';
 export default function CreateForm({firebase}) {
 
     const initialFormState = {
@@ -35,37 +36,38 @@ export default function CreateForm({firebase}) {
     return (
         <div>
             <form onSubmit ={handleSubmit} className="create-account-form">
-                <h1 className="input-header">Name</h1>
+                <label className="form-label">Name</label>
                 <input
                     name="username"
                     value={form.username}
                     onChange={handleInputChange}
                     type="text"
                 />
-                <h1 className="input-header">Email Address</h1>
+                <label className="form-label">Email Address</label>
                 <input
                     name="email"
                     value={form.email}
                     onChange={handleInputChange}
                     type="text"
                 />
-                <h1 className="input-header">Password</h1>
+                <label className="form-label">Password</label>
                 <input
                     name="password"
                     value={form.password}
                     onChange={handleInputChange}
                     type="password"
                 />
-                <h1 className="input-header">Confirm Password</h1>
+                <label className="form-label">Confirm Password</label>
                  <input
                     name="confirmPassword"
                     value={form.confirmPassword}
                     onChange={handleInputChange}
                     type="password"
                 />
-                <button className="create" type="submit">Create an Account</button>
-                
-                {form.error && <p>{form.error.message}</p>}
+                <div className="create">
+                    <button className="arrow" type="submit"><AiOutlineArrowRight className="arror-icon"/></button>
+                </div>
+                {form.error && <p className="error">{form.error.message}</p>}
             </form>
         </div>
     )

@@ -18,7 +18,7 @@ export default function LandingPage() {
                         <path d="M57.9169 62.4808C48.9223 69.2959 41.1043 73.5074 36.9169 67.9808C32.7296 62.4543 33.7086 51.6356 42.7033 44.8206C51.6979 38.0055 62.1738 36.7979 66.3611 42.3244C70.5484 47.851 66.9116 55.6658 57.9169 62.4808Z" fill="#FBE19F"/>
                     </svg>
                 </div>
-                <p className="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p className="blurb">The world's first project based team finder.</p>
                 <Link to={ROUTES.CREATE_ACCOUNT}>
                     <button className="create-account">
                         Create an Account
