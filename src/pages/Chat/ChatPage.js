@@ -1,21 +1,14 @@
 import React, { useContext, useRef, useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { FirebaseContext } from '../../components/Firebase';
 import { useParams } from 'react-router-dom';
-import ChatAppClient from '../../clients/ChatAppClient/ChatAppClient';
 import MessageBar from '../../components/MessageBar/MessageBar';
 import Message from '../../components/Message/Message';
 import firebase from "firebase/app";
 import { MESSAGES } from "../../constants/collections";
 import './ChatPage.css'
-export default function ChatPage({appClient}) {
-    const client = useContext(FirebaseContext);
-    const dummy = useRef();
-
-    const [formValue, setFormValue] = useState('');
+export default function ChatPage() {
     const [messages, setMessages] = useState([]);
-    const { id } = useParams(); // project-id
+    const { id } = useParams(); // project id
 
     useEffect(() => {
         const unsubscribe = firebase
@@ -28,7 +21,6 @@ export default function ChatPage({appClient}) {
             });
     
         return () => {
-          // This is cleanup...
           unsubscribe();
         };
       }, []);
@@ -41,6 +33,5 @@ export default function ChatPage({appClient}) {
             </div>
                 <MessageBar projectID={id}/>
         </div>
-       
     )
 }
